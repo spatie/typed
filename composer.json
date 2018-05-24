@@ -1,0 +1,16 @@
+{
+    "autoload": {
+        "psr-4": {
+            "Typed\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "require": {
+        "larapack/dd": "^1.1",
+        "phpunit/phpunit": "^7.1"
+    }
+}
