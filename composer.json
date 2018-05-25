@@ -1,4 +1,24 @@
 {
+    "name": "spatie/type",
+    "description": "Improvements to PHP's type system in userland: generics, typed lists, tuples and structs",
+    "keywords": [
+        "spatie",
+        "typed",
+        "generics",
+        "typed list",
+        "tuple",
+        "structs"
+    ],
+    "homepage": "https://github.com/spatie/laravel-view-components",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Brent Roose",
+            "email": "brent@spatie.be",
+            "homepage": "https://spatie.be",
+            "role": "Developer"
+        }
+    ],
     "autoload": {
         "psr-4": {
             "Typed\\": "src/"
@@ -10,6 +30,9 @@
         }
     },
     "require": {
+        "php": "^7.1"
+    },
+    "require-dev": {
         "larapack/dd": "^1.1",
         "phpunit/phpunit": "^7.1"
     }
