@@ -1,8 +1,8 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Spatie\Typed;
-
-use TypeError;
 
 final class TupleIterator implements \Iterator
 {
@@ -37,7 +37,7 @@ final class TupleIterator implements \Iterator
 
     public function next(): void
     {
-        ++$this->position;
+        $this->position++;
     }
 
     public function key(): int
