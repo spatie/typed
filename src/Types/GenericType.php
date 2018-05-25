@@ -2,10 +2,13 @@
 
 namespace Spatie\Typed\Types;
 
+use Spatie\Typed\IsNullable;
 use Spatie\Typed\WrongType;
 
 final class GenericType implements Type
 {
+    use IsNullable;
+
     /** @var string */
     private $type;
 

@@ -25,4 +25,13 @@ final class NullableType implements Type
 
         return ($this->type)($value);
     }
+
+    public function getType(): Type {
+        return $this->type;
+    }
+
+    public function nullable(): NullableType
+    {
+        return $this;
+    }
 }

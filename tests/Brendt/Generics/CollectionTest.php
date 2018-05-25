@@ -87,10 +87,17 @@ class CollectionTest extends TestCase
     {
         $list = new Collection(T::nullable(T::int()));
 
-        $list[] = 1;
+        $list[] = null;
         $list[] = null;
 
-        $this->assertEquals(1, $list[0]);
+        foreach ($list as $i) {
+            $this->assertEquals(null, $i);
+        }
+
+        $list[] = 1;
+
+        $this->assertEquals(null, $list[0]);
         $this->assertEquals(null, $list[1]);
+        $this->assertEquals(1, $list[2]);
     }
 }

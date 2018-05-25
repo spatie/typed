@@ -45,11 +45,12 @@ $postList = 1; // TypeError
 ### Tuples:
 
 ```php
-$point = new Tuple(T::float(), T::float(), T::nullable(T::generic(Post::class)));
+$point = new Tuple(T::float(), T::float(), T::nullable(T::generic(Post::class)), T::int()->nullable());
 
 $point[0] = 1.5;
 $point[1] = 3;
 $point[2] = null;
+$point[3] = null;
 
 $point[0] = 'a'; // TypeError
 $point['a'] = 1; // TypeError
@@ -80,6 +81,16 @@ $developer->name = 'Brent';
 
 $developer->age = 'abc' // TypeError
 $developer->somethingElse = 'abc' // TypeError
+```
+
+### Nullable type
+
+A nullable type can be defined in two, functionally identical, ways:
+
+```php
+$list1 = new Collection(T::int()->nullable());
+
+$list2 = new Collection(T::nullable(T::int()));
 ```
 
 ### What's not included:

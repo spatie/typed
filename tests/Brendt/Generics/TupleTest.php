@@ -78,12 +78,13 @@ class TupleTest extends TestCase
     /** @test */
     public function test_offset_set()
     {
-        $tuple = new Tuple(T::int(), T::string(), T::bool(), T::nullable(T::generic(Post::class)));
+        $tuple = new Tuple(T::int(), T::string(), T::bool(), T::nullable(T::generic(Post::class)), T::int()->nullable());
 
         $tuple[0] = 1;
         $tuple[1] = 'a';
         $tuple[2] = true;
         $tuple[3] = null;
+        $tuple[4] = null;
 
         $this->assertEquals(1, $tuple[0]);
         $this->assertEquals('a', $tuple[1]);
