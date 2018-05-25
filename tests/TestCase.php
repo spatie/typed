@@ -2,7 +2,9 @@
 
 namespace Spatie\Typed\Tests;
 
-abstract class TestCase extends \PHPUnit\Framework\TestCase
+use PHPUnit\Framework\TestCase as PHPUnitTestCase;
+
+abstract class TestCase extends PHPUnitTestCase
 {
 
 }
