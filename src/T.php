@@ -6,12 +6,14 @@ namespace Spatie\Typed;
 
 use Spatie\Typed\Types\ArrayType;
 use Spatie\Typed\Types\FloatType;
+use Spatie\Typed\Types\NullableType;
 use Spatie\Typed\Types\StringType;
 use Spatie\Typed\Types\BooleanType;
 use Spatie\Typed\Types\GenericType;
 use Spatie\Typed\Types\IntegerType;
 use Spatie\Typed\Types\CallableType;
 use Spatie\Typed\Types\CollectionType;
+use Spatie\Typed\Types\Type;
 
 class T
 {
@@ -68,5 +70,10 @@ class T
     public static function string(): StringType
     {
         return new StringType();
+    }
+
+    public static function nullable(Type $type): NullableType
+    {
+        return new NullableType($type);
     }
 }

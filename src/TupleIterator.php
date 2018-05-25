@@ -49,10 +49,7 @@ final class TupleIterator implements Iterator
 
     public function valid(): bool
     {
-        return isset(
-            $this->types[$this->position],
-            $this->data[$this->position]
-        );
+        return isset($this->types[$this->position]) && array_key_exists($this->position, $this->data);
     }
 
     public function rewind(): void

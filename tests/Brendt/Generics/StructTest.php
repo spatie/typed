@@ -16,6 +16,7 @@ class StructTest extends TestCase
         $struct = new Struct([
             'name' => T::string(),
             'age'  => T::int(),
+            'second_name' => T::nullable(T::string()),
         ]);
 
         $struct['name'] = 'Brent';
@@ -23,10 +24,12 @@ class StructTest extends TestCase
         $struct->set([
             'name' => 'BrenDt',
             'age'  => 23,
+            'second_name' => null,
         ]);
 
         $this->assertEquals('BrenDt', $struct['name']);
         $this->assertEquals(23, $struct->age);
+        $this->assertEquals(null, $struct['second_name']);
     }
 
     /** @test */

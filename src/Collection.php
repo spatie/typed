@@ -55,7 +55,7 @@ class Collection implements ArrayAccess, Iterator, Countable
 
     public function offsetExists($offset)
     {
-        return isset($this->data[$offset]);
+        return array_key_exists($offset, $this->data);
     }
 
     public function offsetUnset($offset)
@@ -75,7 +75,7 @@ class Collection implements ArrayAccess, Iterator, Countable
 
     public function valid()
     {
-        return isset($this->data[$this->position]);
+        return array_key_exists($this->position, $this->data);
     }
 
     public function rewind()
