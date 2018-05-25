@@ -1,3 +1,5 @@
+# Improved PHP type system in userland
+
 This package is a mere proof of concept about what's possible in PHP's userland to improve type checking. 
 It adds support for typed lists, tuples, structs, and generics. 
 Because all is done in userland, there are limitations on what syntax is possible.
@@ -66,6 +68,7 @@ $developer->somethingElse = 'abc' // TypeError
 - IDE auto completion for generic types.
 - Prevention of type casting between scalar types.
 - Nullable types, though I could add it.
+- Type hint generics in functions.
 
 ## Why bother?
 
@@ -97,3 +100,35 @@ $postList = new Collection(T::generic(Post::class));
 Anyways, it's stuff to think about. 
 And maybe PHP's type system is fine as it is now? 
 You can read more about type safety [on my blog](https://www.stitcher.io/blog/liskov-and-type-safety).
+
+## Contributing
+
+Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
+
+### Security
+
+If you discover any security related issues, please email freek@spatie.be instead of using the issue tracker.
+
+## Postcardware
+
+You're free to use this package, but if it makes it to your production environment we highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using.
+
+Our address is: Spatie, Samberstraat 69D, 2060 Antwerp, Belgium.
+
+We publish all received postcards [on our company website](https://spatie.be/en/opensource/postcards).
+
+## Credits
+
+- [brendt](https://github.com/brendt)
+- [All Contributors](../../contributors)
+
+## Support us
+
+Spatie is a webdesign agency based in Antwerp, Belgium. You'll find an overview of all our open source projects [on our website](https://spatie.be/opensource).
+
+Does your business depend on our contributions? Reach out and support us on [Patreon](https://www.patreon.com/spatie). 
+All pledges will be dedicated to allocating workforce on maintenance and new awesome stuff.
+
+## License
+
+The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
