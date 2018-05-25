@@ -2,6 +2,7 @@
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/spatie/typed.svg?style=flat-square)](https://packagist.org/packages/spatie/typed)
 [![Build Status](https://img.shields.io/travis/spatie/typed/master.svg?style=flat-square)](https://travis-ci.org/spatie/typed)
+[![StyleCI](https://github.styleci.io/repos/134744208/shield?branch=master)](https://github.styleci.io/repos/134744208)
 [![Quality Score](https://img.shields.io/scrutinizer/g/spatie/typed.svg?style=flat-square)](https://scrutinizer-ci.com/g/spatie/typed)
 [![Total Downloads](https://img.shields.io/packagist/dt/spatie/typed.svg?style=flat-square)](https://packagist.org/packages/spatie/typed)
 
