@@ -22,10 +22,10 @@ trait ValidatesType
     private function resolveType($type)
     {
         if (is_string($type) && class_exists($type)) {
-            $type = new $type;
+            $type = new $type();
         }
 
-        if (! is_callable($type)) {
+        if (!is_callable($type)) {
             throw WrongType::fromMessage('Generic types must be callable');
         }
 

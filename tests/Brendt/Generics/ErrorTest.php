@@ -6,12 +6,12 @@ use Spatie\Typed\Collection;
 use Spatie\Typed\Lists\GenericList;
 use Spatie\Typed\Struct;
 use Spatie\Typed\T;
-use Spatie\Typed\Tuple;
-use Spatie\Typed\Types\GenericType;
 use Spatie\Typed\Tests\HelperClass;
 use Spatie\Typed\Tests\Post;
 use Spatie\Typed\Tests\TestCase;
 use Spatie\Typed\Tests\Wrong;
+use Spatie\Typed\Tuple;
+use Spatie\Typed\Types\GenericType;
 use TypeError;
 
 class ErrorTest extends TestCase

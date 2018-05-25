@@ -15,14 +15,14 @@ class StructTest extends TestCase
     {
         $struct = new Struct([
             'name' => T::string(),
-            'age' => T::int(),
+            'age'  => T::int(),
         ]);
 
         $struct['name'] = 'Brent';
 
         $struct->set([
             'name' => 'BrenDt',
-            'age' => 23,
+            'age'  => 23,
         ]);
 
         $this->assertEquals('BrenDt', $struct['name']);

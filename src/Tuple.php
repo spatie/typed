@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Spatie\Typed;
 
@@ -41,13 +43,13 @@ class Tuple implements ArrayAccess
 
     public function offsetSet($offset, $value)
     {
-        if ($offset === null || ! is_numeric($offset)) {
+        if ($offset === null || !is_numeric($offset)) {
             throw WrongType::fromMessage('You must specify a numeric offset');
         }
 
         $type = $this->types[$offset] ?? null;
 
-        if (! $type) {
+        if (!$type) {
             throw WrongType::fromMessage("No type was configured for this tuple at offset {$offset}");
         }
 
