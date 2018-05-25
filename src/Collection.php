@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Spatie\Typed;
 
-use ArrayAccess;
-use Countable;
 use Iterator;
+use Countable;
+use ArrayAccess;
 
 class Collection implements ArrayAccess, Iterator, Countable
 {

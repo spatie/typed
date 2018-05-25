@@ -25,7 +25,7 @@ trait ValidatesType
             $type = new $type();
         }
 
-        if (!is_callable($type)) {
+        if (! is_callable($type)) {
             throw WrongType::fromMessage('Generic types must be callable');
         }
 
