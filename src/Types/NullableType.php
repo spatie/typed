@@ -31,7 +31,7 @@ final class NullableType implements Type
         return $this->type;
     }
 
-    public function nullable(): NullableType
+    public function nullable(): self
     {
         return $this;
     }
