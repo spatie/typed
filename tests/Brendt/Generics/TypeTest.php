@@ -1,19 +1,19 @@
 <?php
 
-namespace Tests\Typed;
+namespace Spatie\Typed\Tests\Typed;
 
-use Typed\Collection;
-use Typed\Types\ArrayType;
-use Typed\Types\BooleanType;
-use Typed\Types\CallableType;
-use Typed\Types\CollectionType;
-use Typed\Types\FloatType;
-use Typed\Types\GenericType;
-use Typed\Types\IntegerType;
-use Typed\Types\StringType;
-use Tests\Post;
-use Tests\TestCase;
-use Tests\Wrong;
+use Spatie\Typed\Collection;
+use Spatie\Typed\Types\ArrayType;
+use Spatie\Typed\Types\BooleanType;
+use Spatie\Typed\Types\CallableType;
+use Spatie\Typed\Types\CollectionType;
+use Spatie\Typed\Types\FloatType;
+use Spatie\Typed\Types\GenericType;
+use Spatie\Typed\Types\IntegerType;
+use Spatie\Typed\Types\StringType;
+use Spatie\Typed\Tests\Post;
+use Spatie\Typed\Tests\TestCase;
+use Spatie\Typed\Tests\Wrong;
 use TypeError;
 
 class TypeTest extends TestCase

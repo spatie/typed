@@ -21,12 +21,12 @@
     ],
     "autoload": {
         "psr-4": {
-            "Typed\\": "src/"
+            "Spatie\\Typed\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\": "tests/"
+            "Spatie\\Typed\\Tests\\": "tests/"
         }
     },
     "require": {

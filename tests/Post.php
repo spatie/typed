@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests;
+namespace Spatie\Typed\Tests;
 
 class Post
 {

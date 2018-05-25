@@ -1,8 +1,8 @@
 <?php
 
-namespace Typed\Types;
+namespace Spatie\Typed\Types;
 
-use Typed\WrongType;
+use Spatie\Typed\WrongType;
 use TypeError;
 
 final class GenericType implements Type

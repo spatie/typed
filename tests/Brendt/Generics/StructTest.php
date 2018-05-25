@@ -1,11 +1,11 @@
 <?php
 
-namespace Tests\Typed;
+namespace Spatie\Typed\Tests\Typed;
 
-use Typed\Struct;
-use Typed\T;
-use Tests\TestCase;
-use Tests\Wrong;
+use Spatie\Typed\Struct;
+use Spatie\Typed\T;
+use Spatie\Typed\Tests\TestCase;
+use Spatie\Typed\Tests\Wrong;
 use TypeError;
 
 class StructTest extends TestCase

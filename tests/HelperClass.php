@@ -1,8 +1,8 @@
 <?php
 
-namespace Tests;
+namespace Spatie\Typed\Tests;
 
-use Typed\Lists\IntegerList;
+use Spatie\Typed\Lists\IntegerList;
 
 class HelperClass
 {

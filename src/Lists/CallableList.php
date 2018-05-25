@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace Typed\Lists;
+namespace Spatie\Typed\Lists;
 
-use Typed\Collection;
-use Typed\Types\CallableType;
+use Spatie\Typed\Collection;
+use Spatie\Typed\Types\CallableType;
 
 final class CallableList extends Collection
 {

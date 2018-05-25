@@ -1,14 +1,14 @@
 <?php
 
-namespace Tests\Typed;
+namespace Spatie\Typed\Tests\Typed;
 
-use Typed\T;
-use Typed\Tuple;
-use Typed\Types\BooleanType;
-use Typed\Types\IntegerType;
-use Typed\Types\StringType;
-use Tests\TestCase;
-use Tests\Wrong;
+use Spatie\Typed\T;
+use Spatie\Typed\Tuple;
+use Spatie\Typed\Types\BooleanType;
+use Spatie\Typed\Types\IntegerType;
+use Spatie\Typed\Types\StringType;
+use Spatie\Typed\Tests\TestCase;
+use Spatie\Typed\Tests\Wrong;
 
 class TupleTest extends TestCase
 {

@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace Typed\Lists;
+namespace Spatie\Typed\Lists;
 
-use Typed\Collection;
-use Typed\T;
+use Spatie\Typed\Collection;
+use Spatie\Typed\T;
 
 final class GenericList extends Collection
 {

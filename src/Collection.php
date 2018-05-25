@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Typed;
+namespace Spatie\Typed;
 
 use ArrayAccess;
 use Countable;

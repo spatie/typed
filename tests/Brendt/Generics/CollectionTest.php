@@ -1,13 +1,13 @@
 <?php
 
-namespace Tests\Typed;
+namespace Spatie\Typed\Tests\Typed;
 
-use Typed\Collection;
-use Typed\Lists\IntegerList;
-use Typed\T;
-use Tests\Post;
-use Tests\TestCase;
-use Tests\Wrong;
+use Spatie\Typed\Collection;
+use Spatie\Typed\Lists\IntegerList;
+use Spatie\Typed\T;
+use Spatie\Typed\Tests\Post;
+use Spatie\Typed\Tests\TestCase;
+use Spatie\Typed\Tests\Wrong;
 use TypeError;
 
 class CollectionTest extends TestCase

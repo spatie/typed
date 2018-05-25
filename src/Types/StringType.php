@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Typed\Types;
+namespace Spatie\Typed\Types;
 
 final class StringType implements Type
 {

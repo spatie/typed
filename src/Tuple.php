@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace Typed;
+namespace Spatie\Typed;
 
 use ArrayAccess;
-use Typed\Types\Type;
+use Spatie\Typed\Types\Type;
 
 class Tuple implements ArrayAccess
 {

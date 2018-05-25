@@ -1,6 +1,6 @@
 <?php
 
-namespace Typed;
+namespace Spatie\Typed;
 
 use TypeError;
 

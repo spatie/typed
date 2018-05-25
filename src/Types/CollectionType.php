@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace Typed\Types;
+namespace Spatie\Typed\Types;
 
-use Typed\Collection;
+use Spatie\Typed\Collection;
 
 final class CollectionType implements Type
 {

@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace Typed\Lists;
+namespace Spatie\Typed\Lists;
 
-use Typed\Collection;
-use Typed\Types\StringType;
+use Spatie\Typed\Collection;
+use Spatie\Typed\Types\StringType;
 
 final class StringList extends Collection
 {
