@@ -45,12 +45,10 @@ $postList = 1; // TypeError
 ### Tuples:
 
 ```php
-$point = new Tuple(T::float(), T::float(), T::nullable(T::generic(Post::class)), T::int()->nullable());
+$point = new Tuple(T::float(), T::float());
 
 $point[0] = 1.5;
 $point[1] = 3;
-$point[2] = null;
-$point[3] = null;
 
 $point[0] = 'a'; // TypeError
 $point['a'] = 1; // TypeError
