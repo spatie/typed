@@ -9,7 +9,7 @@
         "tuple",
         "structs"
     ],
-    "homepage": "https://github.com/spatie/laravel-view-components",
+    "homepage": "https://github.com/spatie/typed",
     "license": "MIT",
     "authors": [
         {
