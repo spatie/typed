@@ -3,7 +3,6 @@
 namespace Spatie\Typed\Types;
 
 use Spatie\Typed\WrongType;
-use TypeError;
 
 final class GenericType implements Type
 {
@@ -18,7 +17,7 @@ final class GenericType implements Type
     public function __invoke($value)
     {
         if (
-            ! $value instanceof $this->type
+            !$value instanceof $this->type
         ) {
             throw WrongType::fromMessage("must be of type {$this->type}");
         }

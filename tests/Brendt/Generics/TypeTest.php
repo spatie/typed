@@ -3,6 +3,9 @@
 namespace Spatie\Typed\Tests\Typed;
 
 use Spatie\Typed\Collection;
+use Spatie\Typed\Tests\Post;
+use Spatie\Typed\Tests\TestCase;
+use Spatie\Typed\Tests\Wrong;
 use Spatie\Typed\Types\ArrayType;
 use Spatie\Typed\Types\BooleanType;
 use Spatie\Typed\Types\CallableType;
@@ -11,9 +14,6 @@ use Spatie\Typed\Types\FloatType;
 use Spatie\Typed\Types\GenericType;
 use Spatie\Typed\Types\IntegerType;
 use Spatie\Typed\Types\StringType;
-use Spatie\Typed\Tests\Post;
-use Spatie\Typed\Tests\TestCase;
-use Spatie\Typed\Tests\Wrong;
 use TypeError;
 
 class TypeTest extends TestCase
@@ -49,7 +49,8 @@ class TypeTest extends TestCase
         return [
             [ArrayType::class, ['a']],
             [BooleanType::class, true],
-            [CallableType::class, function () {}],
+            [CallableType::class, function () {
+            }],
             [CollectionType::class, new Collection(ArrayType::class)],
             [FloatType::class, 1.1],
             [new GenericType(Post::class), new Post()],

@@ -11,12 +11,12 @@ final class WrongType extends TypeError
         parent::__construct($this->wrapMessage($message));
     }
 
-    public static function wrap(TypeError $typeError): WrongType
+    public static function wrap(TypeError $typeError): self
     {
         return new self($typeError->getMessage());
     }
 
-    public static function fromMessage(string $message): WrongType
+    public static function fromMessage(string $message): self
     {
         return new self($message);
     }
@@ -27,6 +27,6 @@ final class WrongType extends TypeError
 
         $location = debug_backtrace()[4] ?? null;
 
-        return 'Argument passed must be' . end($messageParts) . " in {$location['file']}:{$location['line']}\n";
+        return 'Argument passed must be'.end($messageParts)." in {$location['file']}:{$location['line']}\n";
     }
 }

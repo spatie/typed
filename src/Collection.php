@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Spatie\Typed;
 
@@ -63,7 +65,7 @@ class Collection implements ArrayAccess, Iterator, Countable
 
     public function next()
     {
-        ++$this->position;
+        $this->position++;
     }
 
     public function key()
