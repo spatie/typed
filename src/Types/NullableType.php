@@ -6,7 +6,6 @@ namespace Spatie\Typed\Types;
 
 final class NullableType implements Type
 {
-
     /**
      * @var Type|callable
      */
@@ -20,7 +19,7 @@ final class NullableType implements Type
     public function __invoke($value)
     {
         if ($value === null) {
-            return null;
+            return;
         }
 
         return ($this->type)($value);
