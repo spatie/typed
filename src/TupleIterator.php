@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Spatie\Typed;
 
-final class TupleIterator implements \Iterator
+use Iterator;
+
+final class TupleIterator implements Iterator
 {
     /** @var array */
     private $types;
