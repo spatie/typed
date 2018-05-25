@@ -4,7 +4,17 @@ This package is a mere proof of concept about what's possible in PHP's userland 
 It adds support for typed lists, tuples, structs, and generics. 
 Because all is done in userland, there are limitations on what syntax is possible.
 
-#### Typed lists and collections:
+## Installation
+
+You can install the package via composer:
+
+```bash
+composer require spatie/typed
+```
+
+## Usage
+
+### Typed lists and collections:
 
 ```php
 $list = new IntegerList([1, 4]);
@@ -18,7 +28,7 @@ $list = new Collection(T::bool(), [true, false]);
 $list[] = new Post(); // TypeError
 ```
 
-#### Generics:
+### Generics:
 
 ```php
 $postList = new Collection(T::generic(Post::class));
@@ -26,7 +36,7 @@ $postList = new Collection(T::generic(Post::class));
 $postList = 1; // TypeError
 ```
 
-#### Tuples:
+### Tuples:
 
 ```php
 $point = new Tuple(T::float(), T::float());
@@ -39,7 +49,7 @@ $point['a'] = 1; // TypeError
 $point[10] = 1; // TypeError
 ```
 
-#### Structs:
+### Structs:
 
 ```php
 $developer = new Struct([
@@ -62,7 +72,7 @@ $developer->age = 'abc' // TypeError
 $developer->somethingElse = 'abc' // TypeError
 ```
 
-#### What's not included:
+### What's not included:
 
 - Proper syntax.
 - IDE auto completion for generic types.
@@ -70,7 +80,7 @@ $developer->somethingElse = 'abc' // TypeError
 - Nullable types, though I could add it.
 - Type hint generics in functions.
 
-## Why bother?
+## Why did we build this?
 
 PHP has a very weak type system. 
 This is simultaneously a strength and a weakness. 
@@ -105,7 +115,7 @@ You can read more about type safety [on my blog](https://www.stitcher.io/blog/li
 
 Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
-### Security
+## Security
 
 If you discover any security related issues, please email freek@spatie.be instead of using the issue tracker.
 
@@ -119,7 +129,7 @@ We publish all received postcards [on our company website](https://spatie.be/en/
 
 ## Credits
 
-- [brendt](https://github.com/brendt)
+- [Brent Roose](https://github.com/brendt)
 - [All Contributors](../../contributors)
 
 ## Support us
