@@ -24,7 +24,7 @@ class Struct implements ArrayAccess
     public function set(array $data): self
     {
         foreach ($this->definition as $name => $type) {
-            if (! isset($data[$name])) {
+            if (! array_key_exists($name, $data)) {
                 throw WrongType::fromMessage("Missing field for this struct: {$name}:{$type}");
             }
 
@@ -58,7 +58,7 @@ class Struct implements ArrayAccess
 
     public function offsetExists($offset)
     {
-        return isset($this->data[$offset]);
+        return array_key_exists($offset, $this->data);
     }
 
     public function offsetUnset($offset)

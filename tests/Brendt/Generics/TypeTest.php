@@ -3,6 +3,7 @@
 namespace Spatie\Typed\Tests\Typed;
 
 use TypeError;
+use Spatie\Typed\T;
 use Spatie\Typed\Collection;
 use Spatie\Typed\Tests\Post;
 use Spatie\Typed\Tests\Wrong;
@@ -56,6 +57,8 @@ class TypeTest extends TestCase
             [new GenericType(Post::class), new Post()],
             [IntegerType::class, 1],
             [StringType::class, 'a'],
+            [T::nullable(T::string()), 'a'],
+            [T::nullable(T::collection()), null],
         ];
     }
 
@@ -70,6 +73,7 @@ class TypeTest extends TestCase
             [new GenericType(Post::class), new Wrong()],
             [IntegerType::class, new Wrong()],
             [StringType::class, new Wrong()],
+            [T::nullable(T::string()), new Wrong()],
         ];
     }
 }

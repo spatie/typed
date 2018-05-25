@@ -45,10 +45,12 @@ $postList = 1; // TypeError
 ### Tuples:
 
 ```php
-$point = new Tuple(T::float(), T::float());
+$point = new Tuple(T::float(), T::float(), T::nullable(T::generic(Post::class)), T::int()->nullable());
 
 $point[0] = 1.5;
 $point[1] = 3;
+$point[2] = null;
+$point[3] = null;
 
 $point[0] = 'a'; // TypeError
 $point['a'] = 1; // TypeError
@@ -61,13 +63,16 @@ $point[10] = 1; // TypeError
 $developer = new Struct([
     'name' => T::string(),
     'age' => T::int(),
+    'second_name' => T::nullable(T::string()),
 ]);
 
 $developer['name'] = 'Brent';
+$developer['second_name'] = 'John';
 
 $developer->set([
     'name' => 'BrenDt',
     'age' => 23,
+    'second_name' => null,
 ]);
 
 echo $developer->age;
@@ -78,12 +83,21 @@ $developer->age = 'abc' // TypeError
 $developer->somethingElse = 'abc' // TypeError
 ```
 
+### Nullable type
+
+A nullable type can be defined in two, functionally identical, ways:
+
+```php
+$list1 = new Collection(T::int()->nullable());
+
+$list2 = new Collection(T::nullable(T::int()));
+```
+
 ### What's not included:
 
 - Proper syntax.
 - IDE auto completion for generic types.
 - Prevention of type casting between scalar types.
-- Nullable types, though I could add it.
 - Type hint generics in functions.
 
 ## Why did we build this?

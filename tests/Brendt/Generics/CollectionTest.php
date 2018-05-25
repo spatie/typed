@@ -81,4 +81,23 @@ class CollectionTest extends TestCase
 
         $listOfLists[0][0] = new Wrong();
     }
+
+    /** @test */
+    public function test_nullable_collection()
+    {
+        $list = new Collection(T::nullable(T::int()));
+
+        $list[] = null;
+        $list[] = null;
+
+        foreach ($list as $i) {
+            $this->assertEquals(null, $i);
+        }
+
+        $list[] = 1;
+
+        $this->assertEquals(null, $list[0]);
+        $this->assertEquals(null, $list[1]);
+        $this->assertEquals(1, $list[2]);
+    }
 }
