@@ -1,5 +1,5 @@
 {
-    "name": "spatie/type",
+    "name": "spatie/typed",
     "description": "Improvements to PHP's type system in userland: generics, typed lists, tuples and structs",
     "keywords": [
         "spatie",
