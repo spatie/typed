@@ -1,5 +1,10 @@
 # Improved PHP type system in userland
 
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/spatie/typed.svg?style=flat-square)](https://packagist.org/packages/spatie/typed)
+[![Build Status](https://img.shields.io/travis/spatie/typed/master.svg?style=flat-square)](https://travis-ci.org/spatie/typed)
+[![Quality Score](https://img.shields.io/scrutinizer/g/spatie/typed.svg?style=flat-square)](https://scrutinizer-ci.com/g/spatie/typed)
+[![Total Downloads](https://img.shields.io/packagist/dt/spatie/typed.svg?style=flat-square)](https://packagist.org/packages/spatie/typed)
+
 This package is a mere proof of concept about what's possible in PHP's userland to improve type checking. 
 It adds support for typed lists, tuples, structs, and generics. 
 Because all is done in userland, there are limitations on what syntax is possible.
