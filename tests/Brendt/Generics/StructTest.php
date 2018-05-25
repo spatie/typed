@@ -2,11 +2,11 @@
 
 namespace Spatie\Typed\Tests\Typed;
 
-use Spatie\Typed\Struct;
-use Spatie\Typed\T;
-use Spatie\Typed\Tests\TestCase;
-use Spatie\Typed\Tests\Wrong;
 use TypeError;
+use Spatie\Typed\T;
+use Spatie\Typed\Struct;
+use Spatie\Typed\Tests\Wrong;
+use Spatie\Typed\Tests\TestCase;
 
 class StructTest extends TestCase
 {
