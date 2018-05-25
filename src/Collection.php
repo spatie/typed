@@ -12,7 +12,7 @@ class Collection implements ArrayAccess, Iterator, Countable
 {
     use ValidatesType;
 
-    /** @var \Typed\Types\Type */
+    /** @var \Spatie\Typed\Types\Type */
     private $type;
 
     /** @var array */

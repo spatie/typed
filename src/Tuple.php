@@ -11,7 +11,7 @@ class Tuple implements ArrayAccess
 {
     use ValidatesType;
 
-    /** @var \Typed\Types\Type[] */
+    /** @var \Spatie\Typed\Types\Type[] */
     private $types;
 
     /** @var @var array */
@@ -26,7 +26,7 @@ class Tuple implements ArrayAccess
     {
         $iterator = new TupleIterator($this->types, $data);
 
-        /** @var \Typed\TypedValue $item */
+        /** @var \Spatie\Typed\TypedValue $item */
         foreach ($iterator as $key => $item) {
             $data[$key] = $this->validateType($item->type(), $item->value());
         }

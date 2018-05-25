@@ -8,7 +8,7 @@ use Spatie\Typed\Types\Type;
 
 final class TypedValue
 {
-    /** @var \Typed\Types\Type */
+    /** @var \Spatie\Typed\Types\Type */
     private $type;
 
     /** @var mixed */
