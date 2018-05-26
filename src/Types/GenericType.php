@@ -2,9 +2,9 @@
 
 namespace Spatie\Typed\Types;
 
+use Spatie\Typed\Type;
 use Spatie\Typed\Nullable;
 use Spatie\Typed\WrongType;
-use Spatie\Typed\Type;
 
 final class GenericType implements Type, Nullable
 {
