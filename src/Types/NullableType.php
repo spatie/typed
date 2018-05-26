@@ -12,7 +12,7 @@ final class NullableType implements Type, Nullable
     /** @var Type */
     private $type;
 
-    public function __construct(Type $type)
+    public function __construct(Nullable $type)
     {
         $this->type = $type;
     }
