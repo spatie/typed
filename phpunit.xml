@@ -4,7 +4,6 @@
         backupGlobals="false"
         backupStaticAttributes="false"
         colors="true"
-        testsuite="default"
         bootstrap="vendor/autoload.php"
 >
     <testsuites>
