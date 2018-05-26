@@ -1,6 +1,6 @@
 <?php
 
-declare(sctrict_types=1);
+declare(strict_types=1);
 
 namespace Spatie\Typed;
 
