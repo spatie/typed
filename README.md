@@ -204,7 +204,7 @@ $postList = new Collection<Post>();
 
 // vs.
 
-$postList = new Collection(T::generic(Post::class));
+$postList[] = new Collection(T::generic(Post::class));
 ```
 
 Anyways, it's stuff to think about. 
