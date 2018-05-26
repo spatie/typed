@@ -1,12 +1,9 @@
 <?php
 
-namespace Spatie\Typed\Tests\Typed;
+namespace Spatie\Typed\Tests;
 
 use Spatie\Typed\T;
 use Spatie\Typed\Tuple;
-use Spatie\Typed\Tests\Post;
-use Spatie\Typed\Tests\Wrong;
-use Spatie\Typed\Tests\TestCase;
 use Spatie\Typed\Types\StringType;
 use Spatie\Typed\Types\BooleanType;
 use Spatie\Typed\Types\IntegerType;

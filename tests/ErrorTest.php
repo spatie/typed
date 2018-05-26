@@ -1,17 +1,13 @@
 <?php
 
-namespace Spatie\Typed\Tests\Typed\Typed;
+namespace Spatie\Typed\Tests;
 
 use TypeError;
 use Spatie\Typed\T;
 use Spatie\Typed\Tuple;
 use Spatie\Typed\Struct;
 use Spatie\Typed\Collection;
-use Spatie\Typed\Tests\Post;
-use Spatie\Typed\Tests\Wrong;
-use Spatie\Typed\Tests\TestCase;
 use Spatie\Typed\Lists\GenericList;
-use Spatie\Typed\Tests\HelperClass;
 use Spatie\Typed\Types\GenericType;
 
 class ErrorTest extends TestCase

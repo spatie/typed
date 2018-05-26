@@ -1,13 +1,10 @@
 <?php
 
-namespace Spatie\Typed\Tests\Typed;
+namespace Spatie\Typed\Tests;
 
 use TypeError;
 use Spatie\Typed\T;
 use Spatie\Typed\Collection;
-use Spatie\Typed\Tests\Post;
-use Spatie\Typed\Tests\Wrong;
-use Spatie\Typed\Tests\TestCase;
 use Spatie\Typed\Types\ArrayType;
 use Spatie\Typed\Types\FloatType;
 use Spatie\Typed\Types\StringType;
