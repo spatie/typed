@@ -100,9 +100,8 @@ $list2 = new Collection(T::nullable(T::int()));
 
 ## Creating your own types
 
-The `GenericType` or `T::generic()` can be used to create structures of your own type.
-
-It is, however, also possible to create your own type. 
+The `GenericType` or `T::generic()` can be used to create structures of that type.
+It is, however, also possible to create your own types without generics. 
 Let's take the example of `Post`. The generic approach works without adding custom types.
 
 ```php
