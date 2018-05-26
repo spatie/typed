@@ -14,7 +14,7 @@ class Tuple implements ArrayAccess
     /** @var \Spatie\Typed\Type[] */
     private $types;
 
-    /** @var @var array */
+    /** @var array */
     private $data;
 
     public function __construct(Type ...$types)
