@@ -39,7 +39,7 @@ $list[] = new Post(); // TypeError
 ```php
 $postList = new Collection(T::generic(Post::class));
 
-$postList = 1; // TypeError
+$postList[] = 1; // TypeError
 ```
 
 ### Tuples:
