@@ -98,6 +98,88 @@ $list2 = new Collection(T::nullable(T::int()));
 - Prevention of type casting between scalar types.
 - Type hint generics in functions.
 
+## Creating your own types
+
+The `GenericType` or `T::generic()` can be used to create structures of your own type.
+
+It is, however, also possible to create your own type. 
+Let's take the example of `Post`. The generic approach works without adding custom types.
+
+```php
+$postList = new Collection(T::generic(Post::class));
+
+$postList[] = new Post();
+$postList[] = 1; // TypeError 
+```
+
+The `generic` part can be skipped if you create your own type.
+
+```php
+use Spatie\Typed\Type;
+
+class PostType implements Type
+{
+    public function __invoke(Post $post): Post
+    {
+        return $post;
+    }
+}
+```
+
+Now you can use `PostType` directly:
+
+```php
+$postList = new Collection(new PostType());
+```
+
+You're also free to extend the `T` helper.
+
+```php
+class T extends Spatie\Typed\T
+{
+    public static function post(): PostType
+    {
+        return new PostType();
+    }
+}
+
+// ...
+
+$postList = new Collection(T::post());
+```
+
+### Nullable types
+
+If you want `PostType` to also be nullable, your type must implement `Spatie\Typed\Nullable`.
+
+```php
+use Spatie\Typed\Type;
+use Spatie\Typed\Nullable;
+use Spatie\Typed\Types\IsNnullable;
+
+class PostType implements Type, Nullable
+{
+    use IsNullable();
+
+    public function __invoke(Post $post): Post { ... }
+}
+```
+
+The `IsNullable` trait adds the following simple snippet.
+
+```php
+public function nullable(): NullableType
+{
+    return new NullableType($this);
+}
+```
+
+Implementing the `Nullable` interface allows for using your like like so:
+
+```php
+$postList = new Collection(T::post()->nullable());
+```
+
 ## Why did we build this?
 
 PHP has a very weak type system. 

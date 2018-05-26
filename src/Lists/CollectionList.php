@@ -11,6 +11,6 @@ final class CollectionList extends Collection
 {
     public function __construct(array $data = [])
     {
-        parent::__construct(CollectionType::class, $data);
+        parent::__construct(new CollectionType(), $data);
     }
 }

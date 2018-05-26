@@ -11,6 +11,6 @@ final class FloatList extends Collection
 {
     public function __construct(array $data = [])
     {
-        parent::__construct(FloatType::class, $data);
+        parent::__construct(new FloatType(), $data);
     }
 }

@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 namespace Spatie\Typed\Types;
 
-use Spatie\Typed\IsNullable;
+use Spatie\Typed\Nullable;
+use Spatie\Typed\Type;
 
-final class FloatType implements Type
+final class FloatType implements Type, Nullable
 {
     use IsNullable;
 

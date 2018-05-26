@@ -11,6 +11,6 @@ final class BooleanList extends Collection
 {
     public function __construct(array $data = [])
     {
-        parent::__construct(BooleanType::class, $data);
+        parent::__construct(new BooleanType(), $data);
     }
 }

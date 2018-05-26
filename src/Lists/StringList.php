@@ -11,6 +11,6 @@ final class StringList extends Collection
 {
     public function __construct(array $data = [])
     {
-        parent::__construct(StringType::class, $data);
+        parent::__construct(new StringType(), $data);
     }
 }

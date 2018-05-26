@@ -32,9 +32,9 @@ final class TupleIterator implements Iterator
         $this->position = 0;
     }
 
-    public function current(): TypedValue
+    public function current(): array
     {
-        return new TypedValue(current($this->types), current($this->data));
+        return ['type' => current($this->types), 'value' => current($this->data)];
     }
 
     public function next(): void

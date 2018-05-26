@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 namespace Spatie\Typed\Types;
 
-use Spatie\Typed\IsNullable;
+use Spatie\Typed\Nullable;
+use Spatie\Typed\Type;
 
-final class BooleanType implements Type
+final class BooleanType implements Type, Nullable
 {
     use IsNullable;
 

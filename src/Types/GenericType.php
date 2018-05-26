@@ -2,10 +2,11 @@
 
 namespace Spatie\Typed\Types;
 
+use Spatie\Typed\Nullable;
 use Spatie\Typed\WrongType;
-use Spatie\Typed\IsNullable;
+use Spatie\Typed\Type;
 
-final class GenericType implements Type
+final class GenericType implements Type, Nullable
 {
     use IsNullable;
 

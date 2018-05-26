@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Spatie\Typed;
 
-use Spatie\Typed\Types\Type;
 use Spatie\Typed\Types\ArrayType;
 use Spatie\Typed\Types\FloatType;
 use Spatie\Typed\Types\StringType;

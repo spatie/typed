@@ -21,7 +21,7 @@ class Collection implements ArrayAccess, Iterator, Countable
     /** @var int */
     private $position;
 
-    public function __construct($type, array $data = [])
+    public function __construct(Type $type, array $data = [])
     {
         $this->type = $type;
 

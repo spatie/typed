@@ -5,13 +5,12 @@ declare(strict_types=1);
 namespace Spatie\Typed;
 
 use ArrayAccess;
-use Spatie\Typed\Types\Type;
 
 class Tuple implements ArrayAccess
 {
     use ValidatesType;
 
-    /** @var \Spatie\Typed\Types\Type[] */
+    /** @var \Spatie\Typed\Type[] */
     private $types;
 
     /** @var @var array */
@@ -26,9 +25,8 @@ class Tuple implements ArrayAccess
     {
         $iterator = new TupleIterator($this->types, $data);
 
-        /** @var \Spatie\Typed\TypedValue $item */
-        foreach ($iterator as $key => $item) {
-            $data[$key] = $this->validateType($item->type(), $item->value());
+        foreach ($iterator as $key => ['type' => $type, 'value' => $value]) {
+            $data[$key] = $this->validateType($type, $value);
         }
 
         $this->data = $data;

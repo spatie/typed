@@ -3,12 +3,13 @@
 declare(strict_types=1);
 
 namespace Spatie\Typed\Types;
+use Spatie\Typed\Nullable;
+use Spatie\Typed\Type;
 
-final class NullableType implements Type
+
+final class NullableType implements Type, Nullable
 {
-    /**
-     * @var Type|callable
-     */
+    /** @var Type */
     private $type;
 
     public function __construct(Type $type)

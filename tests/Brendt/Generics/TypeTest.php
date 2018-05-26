@@ -48,15 +48,15 @@ class TypeTest extends TestCase
     public function successProvider()
     {
         return [
-            [ArrayType::class, ['a']],
-            [BooleanType::class, true],
-            [CallableType::class, function () {
+            [new ArrayType(), ['a']],
+            [new BooleanType(), true],
+            [new CallableType(), function () {
             }],
-            [CollectionType::class, new Collection(ArrayType::class)],
-            [FloatType::class, 1.1],
+            [new CollectionType(), new Collection(new ArrayType())],
+            [new FloatType(), 1.1],
             [new GenericType(Post::class), new Post()],
-            [IntegerType::class, 1],
-            [StringType::class, 'a'],
+            [new IntegerType(), 1],
+            [new StringType(), 'a'],
             [T::nullable(T::string()), 'a'],
             [T::nullable(T::collection()), null],
         ];

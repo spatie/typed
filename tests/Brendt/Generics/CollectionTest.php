@@ -51,22 +51,6 @@ class CollectionTest extends TestCase
     }
 
     /** @test */
-    public function collection_with_callable()
-    {
-        $list = new Collection(function (Post $post) {
-            return $post;
-        });
-
-        $list[] = new Post();
-
-        $this->assertInstanceOf(Post::class, $list[0]);
-
-        $this->expectException(TypeError::class);
-
-        $list[] = new Wrong();
-    }
-
-    /** @test */
     public function collection_of_collection()
     {
         $listOfLists = new Collection(T::generic(Collection::class));
