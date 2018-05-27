@@ -5,14 +5,14 @@ declare(strict_types=1);
 namespace Spatie\Typed\Types;
 
 use Spatie\Typed\Type;
-use Spatie\Typed\Nullable;
+use Spatie\Typed\NullableType;
 
-final class NullableType implements Type, Nullable
+final class NullType implements Type, NullableType
 {
     /** @var Type */
     private $type;
 
-    public function __construct(Nullable $type)
+    public function __construct(NullableType $type)
     {
         $this->type = $type;
     }

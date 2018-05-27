@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Spatie\Typed\Types;
 
 use Spatie\Typed\Type;
-use Spatie\Typed\Nullable;
+use Spatie\Typed\NullableType;
 
-final class ArrayType implements Type, Nullable
+final class ArrayType implements Type, NullableType
 {
     use IsNullable;
 

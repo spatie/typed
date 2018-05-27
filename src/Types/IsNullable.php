@@ -6,8 +6,8 @@ namespace Spatie\Typed\Types;
 
 trait IsNullable
 {
-    public function nullable(): NullableType
+    public function nullable(): NullType
     {
-        return new NullableType($this);
+        return new NullType($this);
     }
 }

@@ -11,7 +11,7 @@ use Spatie\Typed\Types\BooleanType;
 use Spatie\Typed\Types\GenericType;
 use Spatie\Typed\Types\IntegerType;
 use Spatie\Typed\Types\CallableType;
-use Spatie\Typed\Types\NullableType;
+use Spatie\Typed\Types\NullType;
 use Spatie\Typed\Types\CollectionType;
 
 class T
@@ -71,8 +71,8 @@ class T
         return new StringType();
     }
 
-    public static function nullable(Nullable $type): NullableType
+    public static function nullable(NullableType $type): NullType
     {
-        return new NullableType($type);
+        return new NullType($type);
     }
 }

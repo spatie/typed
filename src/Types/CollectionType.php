@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace Spatie\Typed\Types;
 
 use Spatie\Typed\Type;
-use Spatie\Typed\Nullable;
+use Spatie\Typed\NullableType;
 use Spatie\Typed\Collection;
 
-final class CollectionType implements Type, Nullable
+final class CollectionType implements Type, NullableType
 {
     use IsNullable;
 
