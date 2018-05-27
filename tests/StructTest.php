@@ -9,7 +9,7 @@ use Spatie\Typed\Struct;
 class StructTest extends TestCase
 {
     /** @test */
-    public function test_struct()
+    public function struct()
     {
         $struct = new Struct([
             'name' => T::string(),
