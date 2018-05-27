@@ -157,7 +157,7 @@ use Spatie\Typed\Types\IsNullable;
 
 class PostType implements NullableType
 {
-    use IsNullable();
+    use IsNullable;
 
     public function __invoke(Post $post): Post { ... }
 }
