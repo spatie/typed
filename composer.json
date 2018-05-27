@@ -19,6 +19,13 @@
             "role": "Developer"
         }
     ],
+    "require": {
+        "php": "^7.1"
+    },
+    "require-dev": {
+        "larapack/dd": "^1.1",
+        "phpunit/phpunit": "^7.1"
+    },
     "autoload": {
         "psr-4": {
             "Spatie\\Typed\\": "src/"
@@ -28,12 +35,5 @@
         "psr-4": {
             "Spatie\\Typed\\Tests\\": "tests/"
         }
-    },
-    "require": {
-        "php": "^7.1"
-    },
-    "require-dev": {
-        "larapack/dd": "^1.1",
-        "phpunit/phpunit": "^7.1"
     }
 }
