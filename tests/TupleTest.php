@@ -11,7 +11,7 @@ use Spatie\Typed\Types\IntegerType;
 class TupleTest extends TestCase
 {
     /** @test */
-    public function test_tuple()
+    public function tuple()
     {
         $data = (new Tuple(
             new IntegerType(),
@@ -23,7 +23,7 @@ class TupleTest extends TestCase
     }
 
     /** @test */
-    public function test_wrong_type()
+    public function wrong_type()
     {
         $this->expectException(\TypeError::class);
 
@@ -33,7 +33,7 @@ class TupleTest extends TestCase
     }
 
     /** @test */
-    public function test_wrong_amount()
+    public function wrong_amount()
     {
         $this->expectException(\TypeError::class);
 
@@ -43,7 +43,7 @@ class TupleTest extends TestCase
     }
 
     /** @test */
-    public function test_offset_too_large()
+    public function offset_too_large()
     {
         $this->expectException(\TypeError::class);
 
@@ -53,7 +53,7 @@ class TupleTest extends TestCase
     }
 
     /** @test */
-    public function test_offset_does_not_exist()
+    public function offset_does_not_exist()
     {
         $this->expectException(\TypeError::class);
 
@@ -63,7 +63,7 @@ class TupleTest extends TestCase
     }
 
     /** @test */
-    public function test_wrong_type_for_offset()
+    public function wrong_type_for_offset()
     {
         $this->expectException(\TypeError::class);
 
@@ -73,7 +73,7 @@ class TupleTest extends TestCase
     }
 
     /** @test */
-    public function test_offset_set()
+    public function offset_set()
     {
         $tuple = new Tuple(T::int(), T::string(), T::bool(), T::nullable(T::generic(Post::class)), T::int()->nullable());
 

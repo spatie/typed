@@ -10,7 +10,7 @@ use Spatie\Typed\Lists\IntegerList;
 class CollectionTest extends TestCase
 {
     /** @test */
-    public function test_collection()
+    public function collection()
     {
         $list = new IntegerList();
 
@@ -24,7 +24,7 @@ class CollectionTest extends TestCase
     }
 
     /** @test */
-    public function test_wrong_offset_set()
+    public function wrong_offset_set()
     {
         $this->expectException(TypeError::class);
 
@@ -64,7 +64,7 @@ class CollectionTest extends TestCase
     }
 
     /** @test */
-    public function test_nullable_collection()
+    public function nullable_collection()
     {
         $list = new Collection(T::nullable(T::int()));
 
