@@ -154,7 +154,7 @@ If you want `PostType` to also be nullable, your type must implement `Spatie\Typ
 ```php
 use Spatie\Typed\Type;
 use Spatie\Typed\Nullable;
-use Spatie\Typed\Types\IsNnullable;
+use Spatie\Typed\Types\IsNullable;
 
 class PostType implements Type, Nullable
 {
