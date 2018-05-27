@@ -33,7 +33,7 @@ class TypeTest extends TestCase
      * @test
      * @dataProvider failProvider
      */
-    public function fail($type, $value)
+    public function fails($type, $value)
     {
         $this->expectException(TypeError::class);
 
