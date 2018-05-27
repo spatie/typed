@@ -6,7 +6,7 @@ namespace Spatie\Typed;
 
 use Spatie\Typed\Types\NullableType;
 
-interface Nullable
+interface Nullable extends Type
 {
     public function nullable(): NullableType;
 }
