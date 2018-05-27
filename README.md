@@ -150,14 +150,13 @@ $postList = new Collection(T::post());
 
 ### Nullable types
 
-If you want `PostType` to also be nullable, your type must implement `Spatie\Typed\Nullable`.
+If you want `PostType` to also be nullable, your type must implement `Spatie\Typed\NullableType`.
 
 ```php
-use Spatie\Typed\Type;
-use Spatie\Typed\Nullable;
+use Spatie\Typed\NullableType;
 use Spatie\Typed\Types\IsNnullable;
 
-class PostType implements Type, Nullable
+class PostType implements NullableType
 {
     use IsNullable();
 
@@ -168,13 +167,13 @@ class PostType implements Type, Nullable
 The `IsNullable` trait adds the following simple snippet.
 
 ```php
-public function nullable(): NullableType
+public function nullable(): NullType
 {
-    return new NullableType($this);
+    return new NullType($this);
 }
 ```
 
-Implementing the `Nullable` interface allows for using your like like so:
+Implementing the `NullableType` interface allows for using your like like so:
 
 ```php
 $postList = new Collection(T::post()->nullable());

@@ -2,10 +2,9 @@
 
 namespace Spatie\Typed\Types;
 
-use Spatie\Typed\Type;
 use Spatie\Typed\NullableType;
 
-final class IntegerType implements Type, NullableType
+final class IntegerType implements NullableType
 {
     use IsNullable;
 
