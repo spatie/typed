@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Spatie\Typed\Types;
 
-use Spatie\Typed\NullableType;
 use Spatie\Typed\Type;
+use Spatie\Typed\NullableType;
 
 final class NullType implements NullableType
 {
