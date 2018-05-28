@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Spatie\Typed;
 
+use Spatie\Typed\Types\NullType;
 use Spatie\Typed\Types\ArrayType;
 use Spatie\Typed\Types\FloatType;
 use Spatie\Typed\Types\StringType;
@@ -11,7 +12,6 @@ use Spatie\Typed\Types\BooleanType;
 use Spatie\Typed\Types\GenericType;
 use Spatie\Typed\Types\IntegerType;
 use Spatie\Typed\Types\CallableType;
-use Spatie\Typed\Types\NullType;
 use Spatie\Typed\Types\CollectionType;
 
 class T
