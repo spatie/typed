@@ -9,7 +9,7 @@ use Spatie\Typed\Struct;
 class StructTest extends TestCase
 {
     /** @test */
-    public function struct()
+    public function it_contains_a_fixed_set_of_typed_fields()
     {
         $struct = new Struct([
             'name' => T::string(),
@@ -31,7 +31,7 @@ class StructTest extends TestCase
     }
 
     /** @test */
-    public function wrong_type_when_setting()
+    public function it_validates_types_with_property_access()
     {
         $this->expectException(TypeError::class);
 
@@ -43,7 +43,7 @@ class StructTest extends TestCase
     }
 
     /** @test */
-    public function wrong_type_when_setting_with_array_access()
+    public function it_validates_types_with_array_access()
     {
         $this->expectException(TypeError::class);
 
@@ -55,7 +55,7 @@ class StructTest extends TestCase
     }
 
     /** @test */
-    public function wrong_field()
+    public function it_validates_types_whith_unknown_fields()
     {
         $this->expectException(TypeError::class);
 

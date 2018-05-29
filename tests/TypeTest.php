@@ -20,7 +20,7 @@ class TypeTest extends TestCase
      * @test
      * @dataProvider successProvider
      */
-    public function success($type, $value)
+    public function successful_types($type, $value)
     {
         $collection = new Collection($type);
 
@@ -33,7 +33,7 @@ class TypeTest extends TestCase
      * @test
      * @dataProvider failProvider
      */
-    public function fails($type, $value)
+    public function wrong_types_throw_type_errors($type, $value)
     {
         $this->expectException(TypeError::class);
 

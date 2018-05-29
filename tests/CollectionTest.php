@@ -10,7 +10,7 @@ use Spatie\Typed\Lists\IntegerList;
 class CollectionTest extends TestCase
 {
     /** @test */
-    public function collection()
+    public function items_of_the_same_type_can_be_added()
     {
         $list = new IntegerList();
 
@@ -24,7 +24,7 @@ class CollectionTest extends TestCase
     }
 
     /** @test */
-    public function wrong_offset_set()
+    public function item_with_different_type_cannot_be_set()
     {
         $this->expectException(TypeError::class);
 
@@ -34,7 +34,7 @@ class CollectionTest extends TestCase
     }
 
     /** @test */
-    public function collection_with_generics()
+    public function a_collection_can_have_a_generic_type()
     {
         $list = new Collection(T::generic(Post::class));
 
@@ -48,7 +48,7 @@ class CollectionTest extends TestCase
     }
 
     /** @test */
-    public function collection_of_collection()
+    public function collections_can_contain_collections()
     {
         $listOfLists = new Collection(T::generic(Collection::class));
 
@@ -64,7 +64,7 @@ class CollectionTest extends TestCase
     }
 
     /** @test */
-    public function nullable_collection()
+    public function collection_can_contain_nullable_types()
     {
         $list = new Collection(T::nullable(T::int()));
 

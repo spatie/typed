@@ -13,7 +13,7 @@ use Spatie\Typed\Types\GenericType;
 class ErrorTest extends TestCase
 {
     /** @test */
-    public function simple_stacktrace()
+    public function collection_stacktrace_shows_correct_line()
     {
         $list = new GenericList(Post::class);
 
@@ -29,7 +29,7 @@ class ErrorTest extends TestCase
     }
 
     /** @test */
-    public function nested_stacktrace()
+    public function nested_stacktrace_shows_correct_line()
     {
         $list = new Collection(new GenericType(Post::class));
 
@@ -45,7 +45,7 @@ class ErrorTest extends TestCase
     }
 
     /** @test */
-    public function class_backtrace()
+    public function error_in_class_backtrace_shows_correct_line()
     {
         try {
             new HelperClass();
@@ -55,7 +55,7 @@ class ErrorTest extends TestCase
     }
 
     /** @test */
-    public function tuple_backtrace()
+    public function tuple_stacktrace_shows_correct_line()
     {
         $tuple = new Tuple(T::generic(Wrong::class), T::generic(Wrong::class));
 
@@ -71,7 +71,7 @@ class ErrorTest extends TestCase
     }
 
     /** @test */
-    public function struct_backtrace()
+    public function struct_stacktrace_shows_correct_line()
     {
         $struct = new Struct([
             'name' => T::string(),
