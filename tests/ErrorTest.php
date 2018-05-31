@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Spatie\Typed\Tests;
 
 use TypeError;
@@ -50,7 +52,7 @@ class ErrorTest extends TestCase
         try {
             new HelperClass();
         } catch (TypeError $e) {
-            $this->assertContains('HelperClass.php:13', $e->getMessage());
+            $this->assertContains('HelperClass.php:15', $e->getMessage());
         }
     }
 
