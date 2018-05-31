@@ -25,7 +25,7 @@ class Struct implements ArrayAccess
     {
         foreach ($this->definition as $name => $type) {
             if (! array_key_exists($name, $data)) {
-                throw WrongType::fromMessage("Missing field for this struct: {$name}:{$type}");
+                throw WrongType::withMessage("Missing field for this struct: {$name}:{$type}");
             }
 
             $data[$name] = $this->validateType($type, $data[$name]);
@@ -44,13 +44,13 @@ class Struct implements ArrayAccess
     public function offsetSet($offset, $value)
     {
         if ($offset === null) {
-            throw WrongType::fromMessage('No field specified');
+            throw WrongType::withMessage('No field specified');
         }
 
         $type = $this->definition[$offset] ?? null;
 
         if (! $type) {
-            throw WrongType::fromMessage("No type was configured for this field {$offset}");
+            throw WrongType::withMessage("No type was configured for this field {$offset}");
         }
 
         $this->data[$offset] = $this->validateType($type, $value);
@@ -63,7 +63,7 @@ class Struct implements ArrayAccess
 
     public function offsetUnset($offset)
     {
-        throw WrongType::fromMessage('Struct values cannot be unset');
+        throw WrongType::withMessage('Struct values cannot be unset');
     }
 
     public function toArray(): array

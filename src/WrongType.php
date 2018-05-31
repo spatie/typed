@@ -16,7 +16,7 @@ final class WrongType extends TypeError
         return new self($typeError->getMessage());
     }
 
-    public static function fromMessage(string $message): self
+    public static function withMessage(string $message): self
     {
         return new self($message);
     }

@@ -22,7 +22,7 @@ final class GenericType implements Type
         if (
             ! $value instanceof $this->type
         ) {
-            throw WrongType::fromMessage("must be of type {$this->type}");
+            throw WrongType::withMessage("must be of type {$this->type}");
         }
 
         return $value;

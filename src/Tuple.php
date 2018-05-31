@@ -43,13 +43,13 @@ class Tuple implements ArrayAccess
     public function offsetSet($offset, $value)
     {
         if ($offset === null || ! is_numeric($offset)) {
-            throw WrongType::fromMessage('You must specify a numeric offset');
+            throw WrongType::withMessage('You must specify a numeric offset');
         }
 
         $type = $this->types[$offset] ?? null;
 
         if (! $type) {
-            throw WrongType::fromMessage("No type was configured for this tuple at offset {$offset}");
+            throw WrongType::withMessage("No type was configured for this tuple at offset {$offset}");
         }
 
         $this->data[$offset] = $this->validateType($type, $value);
@@ -62,7 +62,7 @@ class Tuple implements ArrayAccess
 
     public function offsetUnset($offset)
     {
-        throw WrongType::fromMessage('Tuple values cannot be unset');
+        throw WrongType::withMessage('Tuple values cannot be unset');
     }
 
     public function toArray(): array
@@ -89,7 +89,7 @@ class Tuple implements ArrayAccess
                 $dataCount = count($data);
 
                 if ($typeCount !== $dataCount) {
-                    throw WrongType::fromMessage("Tuple count mismatch, excpected exactly {$typeCount} elements, and got {$dataCount}");
+                    throw WrongType::withMessage("Tuple count mismatch, excpected exactly {$typeCount} elements, and got {$dataCount}");
                 }
 
                 $this->types = $types;
