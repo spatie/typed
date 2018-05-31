@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Spatie\Typed\Tests;
 
+use Spatie\Typed\Tests\Extra\Wrong;
 use TypeError;
 use Spatie\Typed\T;
 use Spatie\Typed\Struct;

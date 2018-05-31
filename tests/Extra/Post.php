@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Spatie\Typed\Tests;
+namespace Spatie\Typed\Tests\Extra;
 
 class Post
 {
