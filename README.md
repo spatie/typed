@@ -160,6 +160,24 @@ public function nullable(): NullType
 }
 ```
 
+## Extending data structures
+
+You're free to extend the existing data structures. 
+For example, you could make shorthand tuples like so:
+
+```php
+class Coordinates extends Tuple
+{
+    public function __construct(int $x, int $y)
+    {
+        parent::__construct(T::int(), T::int());
+
+        $this[0] = $x;
+        $this[1] = $y;
+    }
+}
+```
+
 ## Why did we build this?
 
 PHP has a very weak type system. 
