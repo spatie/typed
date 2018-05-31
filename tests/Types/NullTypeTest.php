@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace Spatie\Typed\Tests\Types;
 
-use Spatie\Typed\NullableType;
 use PHPUnit\Framework\TestCase;
+use Spatie\Typed\Type;
 use Spatie\Typed\Types\NullType;
 
-final class NullableTypeTest extends TestCase
+final class NullTypeTest extends TestCase
 {
     /** @test */
     public function constructor_sets_type(): void
     {
-        $type = $this->prophesize(NullableType::class);
+        $type = $this->prophesize(Type::class);
 
         $nullableType = new NullType($type->reveal());
 

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Spatie\Typed\Types;
 
-trait IsNullable
+trait Nullable
 {
     public function nullable(): NullType
     {

@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace Spatie\Typed\Types;
 
 use Spatie\Typed\Collection;
-use Spatie\Typed\NullableType;
+use Spatie\Typed\Type;
 
-final class CollectionType implements NullableType
+final class CollectionType implements Type
 {
-    use IsNullable;
+    use Nullable;
 
     public function __invoke(Collection $value): Collection
     {

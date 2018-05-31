@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Spatie\Typed\Types;
 
-use Spatie\Typed\NullableType;
+use Spatie\Typed\Type;
 
-final class CallableType implements NullableType
+final class CallableType implements Type
 {
-    use IsNullable;
+    use Nullable;
 
     public function __invoke(callable $value): callable
     {

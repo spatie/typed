@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Spatie\Typed\Types;
 
-use Spatie\Typed\NullableType;
+use Spatie\Typed\Type;
 
-final class BooleanType implements NullableType
+final class BooleanType implements Type
 {
-    use IsNullable;
+    use Nullable;
 
     public function __invoke(bool $value): bool
     {

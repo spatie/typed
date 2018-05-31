@@ -115,9 +115,12 @@ The `generic` part can be skipped if you create your own type.
 
 ```php
 use Spatie\Typed\Type;
+use Spatie\Typed\Types\Nullable;
 
 class PostType implements Type
 {
+    use Nullable;
+    
     public function __invoke(Post $post): Post
     {
         return $post;
@@ -147,35 +150,14 @@ class T extends Spatie\Typed\T
 $postList = new Collection(T::post());
 ```
 
-### Nullable types
-
-If you want `PostType` to also be nullable, your type must implement `Spatie\Typed\NullableType`.
-
-```php
-use Spatie\Typed\NullableType;
-use Spatie\Typed\Types\IsNullable;
-
-class PostType implements NullableType
-{
-    use IsNullable;
-
-    public function __invoke(Post $post): Post { ... }
-}
-```
-
-The `IsNullable` trait adds the following simple snippet.
+The `Nullable` trait adds the following simple snippet, 
+so that the type can be made nullable when used.
 
 ```php
 public function nullable(): NullType
 {
     return new NullType($this);
 }
-```
-
-Implementing the `NullableType` interface allows for using your like like so:
-
-```php
-$postList = new Collection(T::post()->nullable());
 ```
 
 ## Why did we build this?

@@ -2,11 +2,11 @@
 
 namespace Spatie\Typed\Types;
 
-use Spatie\Typed\NullableType;
+use Spatie\Typed\Type;
 
-final class IntegerType implements NullableType
+final class IntegerType implements Type
 {
-    use IsNullable;
+    use Nullable;
 
     public function __invoke(int $value): int
     {

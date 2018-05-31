@@ -71,7 +71,7 @@ class T
         return new StringType();
     }
 
-    public static function nullable(NullableType $type): NullType
+    public static function nullable(Type $type): NullType
     {
         return new NullType($type);
     }
