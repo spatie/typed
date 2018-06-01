@@ -175,6 +175,8 @@ public function nullable(): NullType
 }
 ```
 
+> **Note:** It's recommended to also implement `__toString` in your own type classes. 
+
 ## Extending data structures
 
 You're free to extend the existing data structures. 
