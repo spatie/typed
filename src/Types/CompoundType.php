@@ -40,7 +40,12 @@ class CompoundType implements Type
             return $initialValue;
         }
 
-        throw WrongType::withMessage("Type must be either one of");
+        throw WrongType::withMessage("Type must be either one of: {$this->getAvailableTypesString()}");
+    }
+
+    public function __toString(): string
+    {
+        return 'compound';
     }
 
     private function copyValue($value)
@@ -67,5 +72,12 @@ class CompoundType implements Type
         }
 
         return false;
+    }
+
+    private function getAvailableTypesString(): string
+    {
+        return implode(', ', array_map(function (Type $type) {
+            return (string) $type;
+        }, $this->types));
     }
 }

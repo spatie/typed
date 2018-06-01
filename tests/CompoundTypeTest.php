@@ -71,10 +71,16 @@ class CompoundTypeTest extends TestCase
     /** @test */
     public function wrong_types_throws_an_error()
     {
-        $this->expectException(TypeError::class);
+        $list = new Collection(T::compound(T::int(), T::float(), T::generic(Post::class)));
 
-        $list = new Collection(T::compound(T::int(), T::float()));
+        try {
+            $list[] = 'abc';
+        } catch (TypeError $typeError) {
+            $message = $typeError->getMessage();
 
-        $list[] = 'abc';
+            $this->assertContains('integer', $message);
+            $this->assertContains('float', $message);
+            $this->assertContains('generic<Spatie\Typed\Tests\Extra\Post>', $message);
+        }
     }
 }

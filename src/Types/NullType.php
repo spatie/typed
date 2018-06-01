@@ -34,4 +34,9 @@ final class NullType implements Type
     {
         return $this;
     }
+
+    public function __toString(): string
+    {
+        return 'nullable';
+    }
 }

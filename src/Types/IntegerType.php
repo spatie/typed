@@ -14,4 +14,9 @@ final class IntegerType implements Type
     {
         return $value;
     }
+
+    public function __toString(): string
+    {
+        return 'integer';
+    }
 }

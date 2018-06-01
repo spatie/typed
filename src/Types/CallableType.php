@@ -14,4 +14,9 @@ final class CallableType implements Type
     {
         return $value;
     }
+
+    public function __toString(): string
+    {
+        return 'callable';
+    }
 }

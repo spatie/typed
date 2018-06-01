@@ -14,4 +14,9 @@ final class ArrayType implements Type
     {
         return $value;
     }
+
+    public function __toString(): string
+    {
+        return 'array';
+    }
 }
