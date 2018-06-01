@@ -17,6 +17,16 @@ class Point extends Tuple
         $this[1] = $y;
     }
 
+    /**
+     * @param mixed $offset
+     *
+     * @return int
+     */
+    public function offsetGet($offset)
+    {
+        return parent::offsetGet($offset);
+    }
+
     public function getX(): int
     {
         return $this[0];
