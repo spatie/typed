@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Spatie\Typed;
 
+use Spatie\Typed\Types\CompoundType;
 use Spatie\Typed\Types\NullType;
 use Spatie\Typed\Types\ArrayType;
 use Spatie\Typed\Types\FloatType;
@@ -69,6 +70,11 @@ class T
     public static function string(): StringType
     {
         return new StringType();
+    }
+
+    public static function compound(Type ...$types): CompoundType
+    {
+        return new CompoundType(...$types);
     }
 
     public static function nullable(Type $type): NullType
