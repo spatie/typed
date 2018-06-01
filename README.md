@@ -91,6 +91,21 @@ $list1 = new Collection(T::int()->nullable());
 $list2 = new Collection(T::nullable(T::int()));
 ```
 
+### Compound Type
+
+A compound type means a collection of multiple types.
+
+```php
+$list = new Collection(T::compound(T::int(), T::float()));
+
+$list[] = 1;
+$list[] = 1.1;
+
+$list[] = 'abc'; // TypeError
+```
+
+Compound types may also be nullable and contain generics.
+
 ### What's not included:
 
 - Proper syntax.
