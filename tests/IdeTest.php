@@ -10,10 +10,13 @@ use Spatie\Typed\Tests\Extra\FooBar;
 use Spatie\Typed\Tests\Extra\Vector;
 use Spatie\Typed\Tests\Extra\VectorList;
 
+/**
+ * This test case is used to test IDE auto completion, it doesn't actually assert anything useful.
+ */
 class IdeTest extends TestCase
 {
     /** @test */
-    public function a()
+    public function collection_auto_completion()
     {
         $list = new VectorList([new Vector(1, 1, 2, 2)]);
 
@@ -21,17 +24,27 @@ class IdeTest extends TestCase
             $vector->a[0];
         }
 
-        $this->assertTrue(true);
+        $this->addToAssertionCount(1);
     }
 
     /** @test */
-    public function b()
+    public function struct_auto_completion()
+    {
+        $vector = new Vector(1, 1, 2, 2);
+
+        $vector->a;
+
+        $this->addToAssertionCount(1);
+    }
+
+    /** @test */
+    public function tuple_auto_completion()
     {
         $fooBar = new FooBar(new Foo(), new Bar());
 
         $fooBar[0]->foo();
         $fooBar[1]->bar();
 
-        $this->assertTrue(true);
+        $this->addToAssertionCount(1);
     }
 }
