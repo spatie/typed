@@ -83,4 +83,57 @@ class CollectionTest extends TestCase
         $this->assertEquals(null, $list[1]);
         $this->assertEquals(1, $list[2]);
     }
+
+    /** @test */
+    public function it_offset_exists()
+    {
+        $list = new Collection(T::nullable(T::int()));
+
+        $list[] = null;
+        $list[] = null;
+
+        $this->assertTrue($list->offsetExists(0));
+        $this->assertTrue($list->offsetExists(1));
+        $this->assertFalse($list->offsetExists(2));
+    }
+
+    /** @test */
+    public function it_offset_unset_can_unset_value()
+    {
+        $list = new Collection(T::nullable(T::int()));
+
+        $list[] = null;
+        $list[] = null;
+
+        $list->offsetUnset(0);
+
+        $this->assertFalse($list->offsetExists(0));
+    }
+
+    /** @test */
+    public function it_can_return_current_position()
+    {
+        $list = new Collection(T::nullable(T::int()));
+
+        $list[] = null;
+        $list[] = null;
+
+        $this->assertSame(0, $list->key());
+
+        $list->next();
+
+        $this->assertSame(1, $list->key());
+    }
+
+    /** @test */
+    public function it_can_let_collection_return_array()
+    {
+        $list = new Collection(T::int());
+
+        $list[] = 1;
+        $list[] = 2;
+        $list[] = 3;
+
+        $this->assertSame([1, 2, 3], $list->toArray());
+    }
 }

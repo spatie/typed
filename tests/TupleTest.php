@@ -90,4 +90,24 @@ class TupleTest extends TestCase
 
         $tuple[0] = new Wrong();
     }
+
+    /** @test */
+    public function it_offset_exists()
+    {
+        $tuple = new Tuple(T::int());
+        $tuple->set(['key' => 'value']);
+
+        $this->assertTrue($tuple->offsetExists('key'));
+        $this->assertFalse($tuple->offsetExists('invalid_key'));
+    }
+
+    /** @test */
+    public function it_offset_unset_can_not_unset()
+    {
+        $this->expectException(\TypeError::class);
+
+        $tuple = new Tuple(T::int());
+        $tuple->set(['key' => 'value']);
+        $tuple->offsetUnset('key');
+    }
 }
