@@ -7,14 +7,14 @@ namespace Spatie\Typed\Tests\Extra;
 use Spatie\Typed\Collection;
 use Spatie\Typed\Types\GenericType;
 
-class VectorList extends Collection
+class LineCollection extends Collection
 {
-    public function __construct(array $vectors)
+    public function __construct(array $lines)
     {
-        parent::__construct(new GenericType(Vector::class), $vectors);
+        parent::__construct(new GenericType(Line::class), $lines);
     }
 
-    public function current(): Vector
+    public function current(): Line
     {
         return parent::current();
     }

@@ -11,7 +11,7 @@ use Spatie\Typed\Types\GenericType;
  * @property Point a
  * @property Point b
  */
-class Vector extends Struct
+class Line extends Struct
 {
     public function __construct(int $x1, int $y1, int $x2, int $y2)
     {
