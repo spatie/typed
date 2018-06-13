@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Spatie\Typed;
 
-use Spatie\Typed\Types\CompoundType;
+use Spatie\Typed\Types\UnionType;
 use Spatie\Typed\Types\NullType;
 use Spatie\Typed\Types\ArrayType;
 use Spatie\Typed\Types\FloatType;
@@ -72,9 +72,9 @@ class T
         return new StringType();
     }
 
-    public static function compound(Type ...$types): CompoundType
+    public static function union(Type ...$types): UnionType
     {
-        return new CompoundType(...$types);
+        return new UnionType(...$types);
     }
 
     public static function nullable(Type $type): NullType

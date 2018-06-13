@@ -8,7 +8,7 @@ use Spatie\Typed\Type;
 use Spatie\Typed\WrongType;
 use TypeError;
 
-class CompoundType implements Type
+class UnionType implements Type
 {
     use Nullable;
 
@@ -45,7 +45,7 @@ class CompoundType implements Type
 
     public function __toString(): string
     {
-        return 'compound';
+        return 'union';
     }
 
     private function copyValue($value)

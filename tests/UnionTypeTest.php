@@ -10,12 +10,12 @@ use Spatie\Typed\Tests\Extra\Post;
 use Spatie\Typed\Tests\Extra\Wrong;
 use TypeError;
 
-class CompoundTypeTest extends TestCase
+class UnionTypeTest extends TestCase
 {
     /** @test */
     public function types_can_be_combined()
     {
-        $list = new Collection(T::compound(T::int(), T::float()));
+        $list = new Collection(T::union(T::int(), T::float()));
 
         $list[] = 1;
         $list[] = 1.1;
@@ -25,9 +25,9 @@ class CompoundTypeTest extends TestCase
     }
 
     /** @test */
-    public function compound_with_generics()
+    public function union_with_generics()
     {
-        $list = new Collection(T::compound(T::generic(Post::class)));
+        $list = new Collection(T::union(T::generic(Post::class)));
 
         $list[] = new Post();
 
@@ -37,9 +37,9 @@ class CompoundTypeTest extends TestCase
     }
 
     /** @test */
-    public function nullable_compound()
+    public function nullable_union()
     {
-        $list = new Collection(T::compound(T::int(), T::float())->nullable());
+        $list = new Collection(T::union(T::int(), T::float())->nullable());
 
         $list[] = 1;
 
@@ -53,9 +53,9 @@ class CompoundTypeTest extends TestCase
     }
 
     /** @test */
-    public function nullable_child_compound()
+    public function nullable_child_union()
     {
-        $list = new Collection(T::compound(T::int()->nullable(), T::float()));
+        $list = new Collection(T::union(T::int()->nullable(), T::float()));
 
         $list[] = 1;
 
@@ -71,7 +71,7 @@ class CompoundTypeTest extends TestCase
     /** @test */
     public function wrong_types_throws_an_error()
     {
-        $list = new Collection(T::compound(T::int(), T::float(), T::generic(Post::class)));
+        $list = new Collection(T::union(T::int(), T::float(), T::generic(Post::class)));
 
         try {
             $list[] = 'abc';
