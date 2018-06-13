@@ -16,19 +16,11 @@ use Spatie\Typed\Tests\Extra\LineCollection;
 class IdeTest extends TestCase
 {
     /** @test */
-    public function a()
-    {
-        $line = new Line(1, 1, 2, 2);
-    }
-
-
-    /** @test */
     public function tuple_auto_completion()
     {
         $fooBar = new FooBar(new Foo(), new Bar());
 
         $fooBar[0]->foo();
-        $fooBar[1]->bar();
 
         $this->addToAssertionCount(1);
     }
@@ -38,7 +30,7 @@ class IdeTest extends TestCase
     {
         $line = new Line(1, 1, 2, 2);
 
-        $line->a;
+        $line->a->getX();
 
         $this->addToAssertionCount(1);
     }
@@ -48,8 +40,10 @@ class IdeTest extends TestCase
     {
         $list = new LineCollection([new Line(1, 1, 2, 2)]);
 
-        foreach ($list as $vector) {
-            $vector->a[0];
+        foreach ($list as $line) {
+            $line->a->getX();
+
+            $line->a[0];
         }
 
         $this->addToAssertionCount(1);
