@@ -5,12 +5,13 @@ declare(strict_types=1);
 namespace Spatie\Typed\Types;
 
 use Spatie\Typed\Type;
+use Spatie\Typed\ValidatesType;
 use Spatie\Typed\WrongType;
 use TypeError;
 
 class UnionType implements Type
 {
-    use Nullable;
+    use Nullable, ValidatesType;
 
     /** @var \Spatie\Typed\Type[] */
     private $types;
@@ -20,7 +21,7 @@ class UnionType implements Type
         $this->types = $types;
     }
 
-    public function __invoke($value)
+    public function validate($value)
     {
         $initialValue = $this->copyValue($value);
 
@@ -28,7 +29,7 @@ class UnionType implements Type
             $currentValue = $this->copyValue($initialValue);
 
             try {
-                $currentValue = ($type)($currentValue);
+                $currentValue = $type->validate($currentValue);
             } catch (TypeError $typeError) {
                 continue;
             }
