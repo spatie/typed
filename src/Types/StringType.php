@@ -10,7 +10,7 @@ final class StringType implements Type
 {
     use Nullable;
 
-    public function __invoke(string $value): string
+    public function validate($value): string
     {
         return $value;
     }

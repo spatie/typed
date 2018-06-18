@@ -10,7 +10,7 @@ final class BooleanType implements Type
 {
     use Nullable;
 
-    public function __invoke(bool $value): bool
+    public function validate($value): bool
     {
         return $value;
     }

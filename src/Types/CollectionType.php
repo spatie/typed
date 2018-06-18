@@ -11,7 +11,7 @@ final class CollectionType implements Type
 {
     use Nullable;
 
-    public function __invoke(Collection $value): Collection
+    public function validate($value): Collection
     {
         return $value;
     }

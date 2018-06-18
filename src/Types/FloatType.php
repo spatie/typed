@@ -10,7 +10,7 @@ final class FloatType implements Type
 {
     use Nullable;
 
-    public function __invoke(float $value): float
+    public function validate($value): float
     {
         return $value;
     }

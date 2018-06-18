@@ -11,7 +11,7 @@ trait ValidatesType
     private function validateType(Type $type, $value)
     {
         try {
-            $value = ($type)($value);
+            $value = $type->validate($value);
         } catch (TypeError $typeError) {
             throw WrongType::wrap($typeError);
         }

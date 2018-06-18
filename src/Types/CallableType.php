@@ -10,7 +10,7 @@ final class CallableType implements Type
 {
     use Nullable;
 
-    public function __invoke(callable $value): callable
+    public function validate($value): callable
     {
         return $value;
     }

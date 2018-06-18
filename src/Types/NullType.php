@@ -16,13 +16,13 @@ final class NullType implements Type
         $this->type = $type;
     }
 
-    public function __invoke($value)
+    public function validate($value)
     {
         if ($value === null) {
             return;
         }
 
-        return ($this->type)($value);
+        return $this->type->validate($value);
     }
 
     public function getType(): Type

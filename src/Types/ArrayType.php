@@ -10,7 +10,7 @@ final class ArrayType implements Type
 {
     use Nullable;
 
-    public function __invoke(array $value): array
+    public function validate($value): array
     {
         return $value;
     }

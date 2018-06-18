@@ -19,7 +19,7 @@ final class GenericType implements Type
         $this->type = $type;
     }
 
-    public function __invoke($value)
+    public function validate($value)
     {
         if (
             ! $value instanceof $this->type

@@ -121,7 +121,7 @@ class PostType implements Type
 {
     use Nullable;
     
-    public function __invoke(Post $post): Post
+    public function validate($post): Post
     {
         return $post;
     }

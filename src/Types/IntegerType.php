@@ -10,7 +10,7 @@ final class IntegerType implements Type
 {
     use Nullable;
 
-    public function __invoke(int $value): int
+    public function validate($value): int
     {
         return $value;
     }
