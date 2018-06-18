@@ -24,7 +24,8 @@
     },
     "require-dev": {
         "larapack/dd": "^1.1",
-        "phpunit/phpunit": "^7.1"
+        "phpunit/phpunit": "^7.1",
+        "symfony/stopwatch": "^4.1"
     },
     "autoload": {
         "psr-4": {

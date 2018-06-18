@@ -5,10 +5,15 @@
         backupStaticAttributes="false"
         colors="true"
         bootstrap="vendor/autoload.php"
+        defaultTestSuite="default"
 >
     <testsuites>
         <testsuite name="default">
             <directory>tests</directory>
+            <exclude>tests/Benchmarks/</exclude>
+        </testsuite>
+        <testsuite name="benchmarks">
+            <directory>tests/Benchmarks</directory>
         </testsuite>
     </testsuites>
     <filter>
