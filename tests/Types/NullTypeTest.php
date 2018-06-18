@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Spatie\Typed\Tests\Types;
 
-use PHPUnit\Framework\TestCase;
 use Spatie\Typed\Type;
+use PHPUnit\Framework\TestCase;
 use Spatie\Typed\Types\NullType;
 
 final class NullTypeTest extends TestCase
