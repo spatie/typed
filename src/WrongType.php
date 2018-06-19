@@ -29,6 +29,6 @@ final class WrongType extends TypeError
 
         $location = debug_backtrace()[4] ?? null;
 
-        return 'Argument passed must be'.end($messageParts)." in {$location['file']}:{$location['line']}\n";
+        return 'Argument passed must be '.end($messageParts)." in {$location['file']}:{$location['line']}\n";
     }
 }

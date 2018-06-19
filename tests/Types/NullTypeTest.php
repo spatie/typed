@@ -18,5 +18,6 @@ final class NullTypeTest extends TestCase
         $nullableType = new NullType($type->reveal());
 
         $this->assertSame($type->reveal(), $nullableType->getType());
+        $this->assertInstanceOf(NullType::class, $nullableType->nullable());
     }
 }
