@@ -2,8 +2,8 @@
 
 namespace Spatie\Typed\Tests\Benchmarks;
 
-use Spatie\Typed\Collection;
 use Spatie\Typed\T;
+use Spatie\Typed\Collection;
 
 class ListBenchmarkTest extends BenchmarkTest
 {
@@ -38,7 +38,7 @@ class ListBenchmarkTest extends BenchmarkTest
     }
 
     /** @test */
-    public  function array_read()
+    public function array_read()
     {
         $array = [];
 

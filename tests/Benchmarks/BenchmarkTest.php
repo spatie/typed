@@ -52,11 +52,11 @@ abstract class BenchmarkTest extends TestCase
 
 EOL;
 
-        fputs(STDOUT, $output);
+        fwrite(STDOUT, $output);
     }
 
     protected function formatMemory(int $bytes): string
     {
-        return round($bytes / 1000000, 3) . ' MB';
+        return round($bytes / 1000000, 3).' MB';
     }
 }
