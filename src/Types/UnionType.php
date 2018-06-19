@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Spatie\Typed\Types;
 
-use Spatie\Typed\Type;
-use Spatie\Typed\ValidatesType;
-use Spatie\Typed\WrongType;
 use TypeError;
+use Spatie\Typed\Type;
+use Spatie\Typed\WrongType;
+use Spatie\Typed\ValidatesType;
 
 class UnionType implements Type
 {

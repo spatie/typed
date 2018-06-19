@@ -6,8 +6,8 @@ namespace Spatie\Typed\Tests;
 
 use Spatie\Typed\Tests\Extra\Bar;
 use Spatie\Typed\Tests\Extra\Foo;
-use Spatie\Typed\Tests\Extra\FooBar;
 use Spatie\Typed\Tests\Extra\Line;
+use Spatie\Typed\Tests\Extra\FooBar;
 use Spatie\Typed\Tests\Extra\LineCollection;
 
 /**

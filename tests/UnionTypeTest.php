@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Spatie\Typed\Tests;
 
-use Spatie\Typed\Collection;
+use TypeError;
 use Spatie\Typed\T;
+use Spatie\Typed\Collection;
 use Spatie\Typed\Tests\Extra\Post;
 use Spatie\Typed\Tests\Extra\Wrong;
-use TypeError;
 
 class UnionTypeTest extends TestCase
 {

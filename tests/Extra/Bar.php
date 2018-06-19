@@ -6,6 +6,5 @@ class Bar
 {
     public function bar()
     {
-
     }
 }
