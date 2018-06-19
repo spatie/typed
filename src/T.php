@@ -7,6 +7,7 @@ namespace Spatie\Typed;
 use Spatie\Typed\Types\NullType;
 use Spatie\Typed\Types\ArrayType;
 use Spatie\Typed\Types\FloatType;
+use Spatie\Typed\Types\UnionType;
 use Spatie\Typed\Types\StringType;
 use Spatie\Typed\Types\BooleanType;
 use Spatie\Typed\Types\GenericType;
@@ -69,6 +70,11 @@ class T
     public static function string(): StringType
     {
         return new StringType();
+    }
+
+    public static function union(Type ...$types): UnionType
+    {
+        return new UnionType(...$types);
     }
 
     public static function nullable(Type $type): NullType

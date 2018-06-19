@@ -91,6 +91,21 @@ $list1 = new Collection(T::int()->nullable());
 $list2 = new Collection(T::nullable(T::int()));
 ```
 
+### Union Type
+
+A union type means a collection of multiple types.
+
+```php
+$list = new Collection(T::union(T::int(), T::float()));
+
+$list[] = 1;
+$list[] = 1.1;
+
+$list[] = 'abc'; // TypeError
+```
+
+Union types may also be nullable and contain generics.
+
 ### What's not included:
 
 - Proper syntax.
@@ -159,6 +174,8 @@ public function nullable(): NullType
     return new NullType($this);
 }
 ```
+
+> **Note:** It's recommended to also implement `__toString` in your own type classes. 
 
 ## Extending data structures
 

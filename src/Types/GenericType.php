@@ -29,4 +29,9 @@ final class GenericType implements Type
 
         return $value;
     }
+
+    public function __toString(): string
+    {
+        return "generic<{$this->type}>";
+    }
 }

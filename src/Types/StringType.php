@@ -14,4 +14,9 @@ final class StringType implements Type
     {
         return $value;
     }
+
+    public function __toString(): string
+    {
+        return 'string';
+    }
 }

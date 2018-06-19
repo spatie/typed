@@ -15,4 +15,9 @@ final class CollectionType implements Type
     {
         return $value;
     }
+
+    public function __toString(): string
+    {
+        return 'collection';
+    }
 }

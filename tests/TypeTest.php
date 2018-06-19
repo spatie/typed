@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Spatie\Typed\Tests;
 
-use Spatie\Typed\Tests\Extra\Post;
-use Spatie\Typed\Tests\Extra\Wrong;
 use TypeError;
 use Spatie\Typed\T;
 use Spatie\Typed\Collection;
 use Spatie\Typed\Types\ArrayType;
 use Spatie\Typed\Types\FloatType;
+use Spatie\Typed\Tests\Extra\Post;
 use Spatie\Typed\Types\StringType;
+use Spatie\Typed\Tests\Extra\Wrong;
 use Spatie\Typed\Types\BooleanType;
 use Spatie\Typed\Types\GenericType;
 use Spatie\Typed\Types\IntegerType;

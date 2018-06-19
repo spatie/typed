@@ -14,4 +14,9 @@ final class FloatType implements Type
     {
         return $value;
     }
+
+    public function __toString(): string
+    {
+        return 'float';
+    }
 }
