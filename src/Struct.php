@@ -28,7 +28,7 @@ class Struct implements ArrayAccess
         foreach ($this->definition as $name => $type) {
             if (! array_key_exists($name, $data)) {
                 $type = serialize($type);
-                
+
                 throw WrongType::withMessage("Missing field for this struct: {$name}:{$type}");
             }
 
