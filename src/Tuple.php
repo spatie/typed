@@ -22,19 +22,15 @@ class Tuple implements ArrayAccess
 
     public function __construct(...$types)
     {
-        $firstValue = reset($types);
+        foreach ($types as $field => $type) {
+            if (!$type instanceof Type) {
+                $this->values[$field] = $type;
 
-        if ($firstValue instanceof Type) {
-            $this->types = $types;
+                $type = T::infer($type);
+            }
 
-            return;
+            $this->types[$field] = $type;
         }
-
-        foreach ($types as $value) {
-            $this->types[] = T::infer($value);
-        }
-
-        $this->set(...$types);
     }
 
     public function set(...$values): self
