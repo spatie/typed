@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Spatie\Typed;
 
 use ArrayAccess;
+use Spatie\Typed\Excpetions\UninitialisedError;
+use Spatie\Typed\Excpetions\WrongType;
 
 class Struct implements ArrayAccess
 {
@@ -48,7 +50,11 @@ class Struct implements ArrayAccess
 
     public function offsetGet($offset)
     {
-        return isset($this->values[$offset]) ? $this->values[$offset] : null;
+        if (! array_key_exists($offset, $this->values)) {
+            throw UninitialisedError::forField($offset);
+        }
+
+        return $this->values[$offset];
     }
 
     public function offsetSet($offset, $value)

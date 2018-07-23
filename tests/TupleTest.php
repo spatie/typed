@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Spatie\Typed\Tests;
 
 use Spatie\Typed\Excpetions\InferredTypeError;
+use Spatie\Typed\Excpetions\UninitialisedError;
 use Spatie\Typed\T;
 use Spatie\Typed\Tuple;
 use Spatie\Typed\Tests\Extra\Post;
@@ -12,7 +13,7 @@ use Spatie\Typed\Types\StringType;
 use Spatie\Typed\Tests\Extra\Wrong;
 use Spatie\Typed\Types\BooleanType;
 use Spatie\Typed\Types\IntegerType;
-use Spatie\Typed\WrongType;
+use Spatie\Typed\Excpetions\WrongType;
 
 class TupleTest extends TestCase
 {
@@ -125,5 +126,15 @@ class TupleTest extends TestCase
         $this->expectException(WrongType::class);
 
         $tuple[0] = new Wrong();
+    }
+
+    /** @test */
+    public function uninitialised_values_cannot_be_read()
+    {
+        $tuple = new Tuple(T::int());
+
+        $this->expectException(UninitialisedError::class);
+
+        $tuple[0];
     }
 }

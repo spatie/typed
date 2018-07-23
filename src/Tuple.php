@@ -6,16 +6,19 @@ namespace Spatie\Typed;
 
 use Iterator;
 use ArrayAccess;
+use Spatie\Typed\Excpetions\UninitialisedError;
+use Spatie\Typed\Excpetions\UninitialisedValue;
+use Spatie\Typed\Excpetions\WrongType;
 
 class Tuple implements ArrayAccess
 {
     use ValidatesType;
 
     /** @var \Spatie\Typed\Type[] */
-    private $types;
+    private $types = [];
 
     /** @var array */
-    private $data;
+    private $values = [];
 
     public function __construct(...$types)
     {
@@ -42,14 +45,18 @@ class Tuple implements ArrayAccess
             $values[$key] = $this->validateType($type, $value);
         }
 
-        $this->data = $values;
+        $this->values = $values;
 
         return $this;
     }
 
     public function offsetGet($offset)
     {
-        return isset($this->data[$offset]) ? $this->data[$offset] : null;
+        if (! array_key_exists($offset, $this->values)) {
+            throw UninitialisedError::forField("index {$offset}");
+        }
+
+        return $this->values[$offset];
     }
 
     public function offsetSet($offset, $value)
@@ -64,12 +71,12 @@ class Tuple implements ArrayAccess
             throw WrongType::withMessage("No type was configured for this tuple at offset {$offset}");
         }
 
-        $this->data[$offset] = $this->validateType($type, $value);
+        $this->values[$offset] = $this->validateType($type, $value);
     }
 
     public function offsetExists($offset)
     {
-        return array_key_exists($offset, $this->data);
+        return array_key_exists($offset, $this->values);
     }
 
     public function offsetUnset($offset)
@@ -79,7 +86,7 @@ class Tuple implements ArrayAccess
 
     public function toArray(): array
     {
-        return $this->data;
+        return $this->values;
     }
 
     private function createIterator(array $values): Iterator

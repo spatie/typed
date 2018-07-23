@@ -4,8 +4,9 @@ declare(strict_types=1);
 
 namespace Spatie\Typed\Tests;
 
+use Spatie\Typed\Excpetions\UninitialisedError;
 use Spatie\Typed\Tests\Extra\Post;
-use Spatie\Typed\WrongType;
+use Spatie\Typed\Excpetions\WrongType;
 use TypeError;
 use Spatie\Typed\T;
 use Spatie\Typed\Struct;
@@ -180,5 +181,15 @@ class StructTest extends TestCase
         $this->expectException(WrongType::class);
 
         $struct->foo = new Wrong();
+    }
+
+    /** @test */
+    public function uninitialised_values_cannot_be_read()
+    {
+        $sturct = new Struct(['foo' => T::int()]);
+
+        $this->expectException(UninitialisedError::class);
+
+        $sturct->foo;
     }
 }
