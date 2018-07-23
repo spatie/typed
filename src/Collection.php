@@ -21,9 +21,6 @@ class Collection implements ArrayAccess, Iterator, Countable
     /** @var int */
     private $position = 0;
 
-    /**
-     * @var \Spatie\Typed\Type|array $type
-     */
     public function __construct($type)
     {
         if ($type instanceof Type) {
