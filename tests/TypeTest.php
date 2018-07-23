@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace Spatie\Typed\Tests;
 
-use Spatie\Typed\Excpetions\InferredTypeError;
-use Spatie\Typed\Type;
 use TypeError;
 use Spatie\Typed\T;
+use Spatie\Typed\Type;
 use Spatie\Typed\Collection;
 use Spatie\Typed\Types\ArrayType;
 use Spatie\Typed\Types\FloatType;
@@ -19,6 +18,7 @@ use Spatie\Typed\Types\GenericType;
 use Spatie\Typed\Types\IntegerType;
 use Spatie\Typed\Types\CallableType;
 use Spatie\Typed\Types\CollectionType;
+use Spatie\Typed\Excpetions\InferredTypeError;
 
 class TypeTest extends TestCase
 {
@@ -47,7 +47,6 @@ class TypeTest extends TestCase
 
         $collection[] = $value;
     }
-
 
     /** @test */
     public function unknown_types_cannot_be_inferred()
@@ -107,7 +106,8 @@ class TypeTest extends TestCase
             [new Post(), T::generic(Post::class)],
             [[], T::array()],
             [true, T::boolean()],
-            [function () {}, T::callable()],
+            [function () {
+            }, T::callable()],
         ];
     }
 }

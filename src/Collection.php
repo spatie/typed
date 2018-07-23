@@ -22,7 +22,7 @@ class Collection implements ArrayAccess, Iterator, Countable
     private $position = 0;
 
     /**
-     * @var \Spatie\Typed\Type|array $type
+     * @var \Spatie\Typed\Type|array
      */
     public function __construct($type)
     {
@@ -39,7 +39,7 @@ class Collection implements ArrayAccess, Iterator, Countable
         $this->set($type);
     }
 
-    public function set(array $data): Collection
+    public function set(array $data): self
     {
         foreach ($data as $item) {
             $this[] = $item;

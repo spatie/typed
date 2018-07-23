@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Spatie\Typed;
 
 use ArrayAccess;
-use Spatie\Typed\Excpetions\UninitialisedError;
 use Spatie\Typed\Excpetions\WrongType;
+use Spatie\Typed\Excpetions\UninitialisedError;
 
 class Struct implements ArrayAccess
 {
@@ -21,7 +21,7 @@ class Struct implements ArrayAccess
     public function __construct(array $types)
     {
         foreach ($types as $field => $type) {
-            if (!$type instanceof Type) {
+            if (! $type instanceof Type) {
                 $this->values[$field] = $type;
 
                 $type = T::infer($type);
