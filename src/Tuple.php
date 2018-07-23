@@ -6,38 +6,53 @@ namespace Spatie\Typed;
 
 use Iterator;
 use ArrayAccess;
+use Spatie\Typed\Excpetions\UninitialisedError;
+use Spatie\Typed\Excpetions\UninitialisedValue;
+use Spatie\Typed\Excpetions\WrongType;
 
 class Tuple implements ArrayAccess
 {
     use ValidatesType;
 
     /** @var \Spatie\Typed\Type[] */
-    private $types;
+    private $types = [];
 
     /** @var array */
-    private $data;
+    private $values = [];
 
-    public function __construct(Type ...$types)
+    public function __construct(...$types)
     {
-        $this->types = $types;
+        foreach ($types as $field => $type) {
+            if (!$type instanceof Type) {
+                $this->values[$field] = $type;
+
+                $type = T::infer($type);
+            }
+
+            $this->types[$field] = $type;
+        }
     }
 
-    public function set(array $data): self
+    public function set(...$values): self
     {
-        $iterator = $this->createIterator($data);
+        $iterator = $this->createIterator($values);
 
         foreach ($iterator as $key => ['type' => $type, 'value' => $value]) {
-            $data[$key] = $this->validateType($type, $value);
+            $values[$key] = $this->validateType($type, $value);
         }
 
-        $this->data = $data;
+        $this->values = $values;
 
         return $this;
     }
 
     public function offsetGet($offset)
     {
-        return isset($this->data[$offset]) ? $this->data[$offset] : null;
+        if (! array_key_exists($offset, $this->values)) {
+            throw UninitialisedError::forField("index {$offset}");
+        }
+
+        return $this->values[$offset];
     }
 
     public function offsetSet($offset, $value)
@@ -52,12 +67,12 @@ class Tuple implements ArrayAccess
             throw WrongType::withMessage("No type was configured for this tuple at offset {$offset}");
         }
 
-        $this->data[$offset] = $this->validateType($type, $value);
+        $this->values[$offset] = $this->validateType($type, $value);
     }
 
     public function offsetExists($offset)
     {
-        return array_key_exists($offset, $this->data);
+        return array_key_exists($offset, $this->values);
     }
 
     public function offsetUnset($offset)
@@ -67,39 +82,39 @@ class Tuple implements ArrayAccess
 
     public function toArray(): array
     {
-        return $this->data;
+        return $this->values;
     }
 
-    private function createIterator(array $data): Iterator
+    private function createIterator(array $values): Iterator
     {
-        return new class($this->types, $data) implements Iterator {
+        return new class($this->types, $values) implements Iterator {
             /** @var array */
             private $types;
 
             /** @var array */
-            private $data;
+            private $values;
 
             /** @var int */
             private $position;
 
-            public function __construct(array $types, array $data)
+            public function __construct(array $types, array $values)
             {
                 $typeCount = count($types);
 
-                $dataCount = count($data);
+                $dataCount = count($values);
 
                 if ($typeCount !== $dataCount) {
-                    throw WrongType::withMessage("Tuple count mismatch, excpected exactly {$typeCount} elements, and got {$dataCount}");
+                    throw WrongType::withMessage("Tuple count mismatch, expected exactly {$typeCount} elements, and got {$dataCount}");
                 }
 
                 $this->types = $types;
-                $this->data = $data;
+                $this->values = $values;
                 $this->position = 0;
             }
 
             public function current(): array
             {
-                return ['type' => current($this->types), 'value' => current($this->data)];
+                return ['type' => $this->types[$this->position], 'value' => $this->values[$this->position]];
             }
 
             public function next(): void
@@ -114,7 +129,7 @@ class Tuple implements ArrayAccess
 
             public function valid(): bool
             {
-                return isset($this->types[$this->position]) && array_key_exists($this->position, $this->data);
+                return isset($this->types[$this->position]) && array_key_exists($this->position, $this->values);
             }
 
             public function rewind(): void

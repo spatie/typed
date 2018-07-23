@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Spatie\Typed;
+namespace Spatie\Typed\Excpetions;
 
 use TypeError;
 

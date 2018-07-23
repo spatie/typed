@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Spatie\Typed;
 
+use Spatie\Typed\Excpetions\InferredTypeError;
 use Spatie\Typed\Types\NullType;
 use Spatie\Typed\Types\ArrayType;
 use Spatie\Typed\Types\FloatType;
@@ -80,5 +81,24 @@ class T
     public static function nullable(Type $type): NullType
     {
         return new NullType($type);
+    }
+
+    public static function infer($value): Type
+    {
+        if (is_callable($value)) {
+            return new CallableType();
+        }
+
+        if (is_object($value)) {
+            return new GenericType(get_class($value));
+        }
+
+        $type = gettype($value);
+
+        if (! method_exists(self::class, $type)) {
+            throw InferredTypeError::cannotInferType($type);
+        }
+
+        return forward_static_call(self::class . '::' . $type);
     }
 }
