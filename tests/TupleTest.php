@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Spatie\Typed\Tests;
 
+use Spatie\Typed\Excpetions\InferredTypeError;
 use Spatie\Typed\T;
 use Spatie\Typed\Tuple;
 use Spatie\Typed\Tests\Extra\Post;
@@ -11,6 +12,7 @@ use Spatie\Typed\Types\StringType;
 use Spatie\Typed\Tests\Extra\Wrong;
 use Spatie\Typed\Types\BooleanType;
 use Spatie\Typed\Types\IntegerType;
+use Spatie\Typed\WrongType;
 
 class TupleTest extends TestCase
 {
@@ -21,7 +23,7 @@ class TupleTest extends TestCase
             new IntegerType(),
             new StringType(),
             new BooleanType())
-        )->set([1, 'a', true]);
+        )->set(1, 'a', true);
 
         $this->assertTrue(is_array($data->toArray()));
     }
@@ -33,7 +35,7 @@ class TupleTest extends TestCase
 
         $tuple = new Tuple(new Wrong(), new StringType(), new BooleanType());
 
-        $tuple->set([1, 'a', true]);
+        $tuple->set(1, 'a', true);
     }
 
     /** @test */
@@ -43,7 +45,7 @@ class TupleTest extends TestCase
 
         $tuple = new Tuple(new IntegerType(), new StringType(), new BooleanType());
 
-        $tuple->set([1, 'a', true, true]);
+        $tuple->set(1, 'a', true, true);
     }
 
     /** @test */
@@ -94,22 +96,34 @@ class TupleTest extends TestCase
     }
 
     /** @test */
-    public function it_offset_exists()
-    {
-        $tuple = new Tuple(T::int());
-        $tuple->set(['key' => 'value']);
-
-        $this->assertTrue($tuple->offsetExists('key'));
-        $this->assertFalse($tuple->offsetExists('invalid_key'));
-    }
-
-    /** @test */
     public function it_offset_unset_can_not_unset()
     {
         $this->expectException(\TypeError::class);
 
         $tuple = new Tuple(T::int());
-        $tuple->set(['key' => 'value']);
+
         $tuple->offsetUnset('key');
+    }
+
+    /** @test */
+    public function types_can_be_inferred()
+    {
+        $tuple = new Tuple(1, 'a', new Post());
+
+        $this->assertEquals(1, $tuple[0]);
+        $this->assertEquals('a', $tuple[1]);
+        $this->assertInstanceOf(Post::class, $tuple[2]);
+
+        $tuple[0] = 2;
+        $tuple[1] = 'b';
+        $tuple[2] = new Post();
+
+        $this->assertEquals(2, $tuple[0]);
+        $this->assertEquals('b', $tuple[1]);
+        $this->assertInstanceOf(Post::class, $tuple[2]);
+
+        $this->expectException(WrongType::class);
+
+        $tuple[0] = new Wrong();
     }
 }

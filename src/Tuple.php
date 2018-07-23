@@ -17,20 +17,32 @@ class Tuple implements ArrayAccess
     /** @var array */
     private $data;
 
-    public function __construct(Type ...$types)
+    public function __construct(...$types)
     {
-        $this->types = $types;
-    }
+        $firstValue = reset($types);
 
-    public function set(array $data): self
-    {
-        $iterator = $this->createIterator($data);
+        if ($firstValue instanceof Type) {
+            $this->types = $types;
 
-        foreach ($iterator as $key => ['type' => $type, 'value' => $value]) {
-            $data[$key] = $this->validateType($type, $value);
+            return;
         }
 
-        $this->data = $data;
+        foreach ($types as $value) {
+            $this->types[] = T::infer($value);
+        }
+
+        $this->set(...$types);
+    }
+
+    public function set(...$values): self
+    {
+        $iterator = $this->createIterator($values);
+
+        foreach ($iterator as $key => ['type' => $type, 'value' => $value]) {
+            $values[$key] = $this->validateType($type, $value);
+        }
+
+        $this->data = $values;
 
         return $this;
     }
@@ -70,36 +82,36 @@ class Tuple implements ArrayAccess
         return $this->data;
     }
 
-    private function createIterator(array $data): Iterator
+    private function createIterator(array $values): Iterator
     {
-        return new class($this->types, $data) implements Iterator {
+        return new class($this->types, $values) implements Iterator {
             /** @var array */
             private $types;
 
             /** @var array */
-            private $data;
+            private $values;
 
             /** @var int */
             private $position;
 
-            public function __construct(array $types, array $data)
+            public function __construct(array $types, array $values)
             {
                 $typeCount = count($types);
 
-                $dataCount = count($data);
+                $dataCount = count($values);
 
                 if ($typeCount !== $dataCount) {
-                    throw WrongType::withMessage("Tuple count mismatch, excpected exactly {$typeCount} elements, and got {$dataCount}");
+                    throw WrongType::withMessage("Tuple count mismatch, expected exactly {$typeCount} elements, and got {$dataCount}");
                 }
 
                 $this->types = $types;
-                $this->data = $data;
+                $this->values = $values;
                 $this->position = 0;
             }
 
             public function current(): array
             {
-                return ['type' => current($this->types), 'value' => current($this->data)];
+                return ['type' => $this->types[$this->position], 'value' => $this->values[$this->position]];
             }
 
             public function next(): void
@@ -114,7 +126,7 @@ class Tuple implements ArrayAccess
 
             public function valid(): bool
             {
-                return isset($this->types[$this->position]) && array_key_exists($this->position, $this->data);
+                return isset($this->types[$this->position]) && array_key_exists($this->position, $this->values);
             }
 
             public function rewind(): void

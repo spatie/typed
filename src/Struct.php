@@ -11,21 +11,27 @@ class Struct implements ArrayAccess
     use ValidatesType;
 
     /** @var array */
-    private $definition;
+    private $types = [];
 
     /** @var array */
-    private $data;
+    private $values = [];
 
-    public function __construct(array $definition)
+    public function __construct(array $types)
     {
-        $this->definition = $definition;
+        foreach ($types as $field => $type) {
+            if (!$type instanceof Type) {
+                $this->values[$field] = $type;
 
-        $this->data = [];
+                $type = T::infer($type);
+            }
+
+            $this->types[$field] = $type;
+        }
     }
 
     public function set(array $data): self
     {
-        foreach ($this->definition as $name => $type) {
+        foreach ($this->types as $name => $type) {
             if (! array_key_exists($name, $data)) {
                 $type = serialize($type);
 
@@ -35,14 +41,14 @@ class Struct implements ArrayAccess
             $data[$name] = $this->validateType($type, $data[$name]);
         }
 
-        $this->data = $data;
+        $this->values = $data;
 
         return $this;
     }
 
     public function offsetGet($offset)
     {
-        return isset($this->data[$offset]) ? $this->data[$offset] : null;
+        return isset($this->values[$offset]) ? $this->values[$offset] : null;
     }
 
     public function offsetSet($offset, $value)
@@ -51,18 +57,18 @@ class Struct implements ArrayAccess
             throw WrongType::withMessage('No field specified');
         }
 
-        $type = $this->definition[$offset] ?? null;
+        $type = $this->types[$offset] ?? null;
 
         if (! $type) {
             throw WrongType::withMessage("No type was configured for this field {$offset}");
         }
 
-        $this->data[$offset] = $this->validateType($type, $value);
+        $this->values[$offset] = $this->validateType($type, $value);
     }
 
     public function offsetExists($offset)
     {
-        return array_key_exists($offset, $this->data);
+        return array_key_exists($offset, $this->values);
     }
 
     public function offsetUnset($offset)
@@ -72,7 +78,7 @@ class Struct implements ArrayAccess
 
     public function toArray(): array
     {
-        return $this->data;
+        return $this->values;
     }
 
     public function __get($name)

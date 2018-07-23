@@ -7,7 +7,7 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/spatie/typed.svg?style=flat-square)](https://packagist.org/packages/spatie/typed)
 
 This package is a mere proof of concept about what's possible in PHP's userland to improve type checking. 
-It adds support for typed lists, tuples, structs, and generics. 
+It adds support for type inference, generics, union types, typed lists, tuples and structs.
 Because all is done in userland, there are limitations on what syntax is possible.
 
 ## Installation
@@ -20,7 +20,47 @@ composer require spatie/typed
 
 ## Usage
 
+### Type inference
+
+Both collections, tuples and structs support inferred types. 
+This means that all examples are also possible, without manually specifying types.
+For example:
+
+```php
+// This collection will only allow objects of type `Post` in it.
+$postCollection = new Collection([new Post()]);
+
+// This tuple will keep its signature of (Point, Point).
+$vector = new Tuple(new Point(30, 5), new Point(120, 0));
+
+// This struct's fields are autmoatically type checked.
+$struct = [
+    'foo' => new Post(),
+    'bar' => function () {
+        // ...
+    },
+];
+```
+
+The following examples all show the manual type configuration. 
+There are some cases where type inference falls short, and you have to fall back on manually defining them.
+You might also prefer the manual approach, for clarity's sake.
+
 ### Typed lists and collections:
+
+```php
+$list = new Collection(T::bool());
+
+$list[] = new Post(); // TypeError
+```
+
+It's possible to directly initialise a collection with data after construction.
+
+```php
+$list = (new Collection(T::string()))->set(['a', 'b', 'c']);
+```
+
+This package also provides some predefined lists, as shortcuts.
 
 ```php
 $list = new IntegerList([1, 4]);
@@ -28,13 +68,9 @@ $list = new IntegerList([1, 4]);
 $list[] = 'a'; // TypeError
 ```
 
-```php
-$list = new Collection(T::bool(), [true, false]);
-
-$list[] = new Post(); // TypeError
-```
-
 ### Generics:
+
+Generic types wrap around classes, allowing you to not creating a custom type for every class.
 
 ```php
 $postList = new Collection(T::generic(Post::class));
@@ -53,6 +89,12 @@ $point[1] = 3;
 $point[0] = 'a'; // TypeError
 $point['a'] = 1; // TypeError
 $point[10] = 1; // TypeError
+```
+
+Like lists, a tuple can also be given some data after construction with the `set` function.
+
+```php
+$tuple = (new Tuple(T::string(), T::array()))->set('abc', []);
 ```
 
 ### Structs:

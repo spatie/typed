@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Spatie\Typed\Tests;
 
+use Spatie\Typed\Tests\Extra\Post;
+use Spatie\Typed\WrongType;
 use TypeError;
 use Spatie\Typed\T;
 use Spatie\Typed\Struct;
@@ -120,7 +122,7 @@ class StructTest extends TestCase
     }
 
     /** @test */
-    public function it_can_let_structp_return_array()
+    public function it_can_let_struct_return_array()
     {
         $struct = new Struct([
             'name' => T::string(),
@@ -152,5 +154,31 @@ class StructTest extends TestCase
                 'mom', 'dad', 'uncle', 'aunt',
             ],
         ], $struct->toArray());
+    }
+
+    /** @test */
+    public function types_can_be_inferred()
+    {
+        $struct = new Struct([
+            'foo' => 1,
+            'bar' => 'a',
+            'baz' => new Post(),
+        ]);
+
+        $this->assertEquals(1, $struct->foo);
+        $this->assertEquals('a', $struct->bar);
+        $this->assertInstanceOf(Post::class, $struct->baz);
+
+        $struct->foo = 2;
+        $struct->bar = 'b';
+        $struct->baz = new Post();
+
+        $this->assertEquals(2, $struct->foo);
+        $this->assertEquals('b', $struct->bar);
+        $this->assertInstanceOf(Post::class, $struct->baz);
+
+        $this->expectException(WrongType::class);
+
+        $struct->foo = new Wrong();
     }
 }
