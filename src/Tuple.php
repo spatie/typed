@@ -6,9 +6,8 @@ namespace Spatie\Typed;
 
 use Iterator;
 use ArrayAccess;
-use Spatie\Typed\Excpetions\UninitialisedError;
-use Spatie\Typed\Excpetions\UninitialisedValue;
 use Spatie\Typed\Excpetions\WrongType;
+use Spatie\Typed\Excpetions\UninitialisedError;
 
 class Tuple implements ArrayAccess
 {
@@ -23,7 +22,7 @@ class Tuple implements ArrayAccess
     public function __construct(...$types)
     {
         foreach ($types as $field => $type) {
-            if (!$type instanceof Type) {
+            if (! $type instanceof Type) {
                 $this->values[$field] = $type;
 
                 $type = T::infer($type);

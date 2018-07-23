@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Spatie\Typed;
 
-use Spatie\Typed\Excpetions\InferredTypeError;
 use Spatie\Typed\Types\NullType;
 use Spatie\Typed\Types\ArrayType;
 use Spatie\Typed\Types\FloatType;
@@ -15,6 +14,7 @@ use Spatie\Typed\Types\GenericType;
 use Spatie\Typed\Types\IntegerType;
 use Spatie\Typed\Types\CallableType;
 use Spatie\Typed\Types\CollectionType;
+use Spatie\Typed\Excpetions\InferredTypeError;
 
 class T
 {
@@ -99,6 +99,6 @@ class T
             throw InferredTypeError::cannotInferType($type);
         }
 
-        return forward_static_call(self::class . '::' . $type);
+        return forward_static_call(self::class.'::'.$type);
     }
 }
