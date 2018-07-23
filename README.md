@@ -46,6 +46,10 @@ The following examples all show the manual type configuration.
 There are some cases where type inference falls short, and you have to fall back on manually defining them.
 You might also prefer the manual approach, for clarity's sake.
 
+Note that type may be partially inferred. 
+Some fields in tuples or structs may be type definitions, others may be real values.
+Uninitialised types will throw an error on read. 
+
 ### Typed lists and collections:
 
 ```php
