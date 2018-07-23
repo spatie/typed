@@ -19,17 +19,33 @@ class Collection implements ArrayAccess, Iterator, Countable
     protected $data = [];
 
     /** @var int */
-    private $position;
+    private $position = 0;
 
-    public function __construct(Type $type, array $data = [])
+    /**
+     * @var \Spatie\Typed\Type|array $type
+     */
+    public function __construct($type)
     {
-        $this->type = $type;
+        if ($type instanceof Type) {
+            $this->type = $type;
 
-        $this->position = 0;
+            return;
+        }
 
+        $firstValue = reset($type);
+
+        $this->type = T::infer($firstValue);
+
+        $this->set($type);
+    }
+
+    public function set(array $data): Collection
+    {
         foreach ($data as $item) {
             $this[] = $item;
         }
+
+        return $this;
     }
 
     public function current()

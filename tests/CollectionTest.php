@@ -56,15 +56,35 @@ class CollectionTest extends TestCase
     {
         $listOfLists = new Collection(T::generic(Collection::class));
 
-        $listOfLists[] = new Collection(T::string(), ['a', 'b']);
+        $listOfLists[] = new Collection(T::string());
 
-        $listOfLists[] = new Collection(T::int(), [1, 2]);
+        $listOfLists[] = new Collection(T::int());
 
         $listOfLists[0][0] = 'c';
 
         $this->expectException(TypeError::class);
 
         $listOfLists[0][0] = new Wrong();
+    }
+
+    /** @test */
+    public function type_can_be_inferred()
+    {
+        $collection = new Collection([1, 2]);
+
+        $collection[] = 3;
+
+        $this->expectException(TypeError::class);
+
+        $collection[] = new Wrong();
+    }
+
+    /** @test */
+    public function mixed_inferred_values_throw_an_error()
+    {
+        $this->expectException(TypeError::class);
+
+        new Collection([1, new Wrong()]);
     }
 
     /** @test */

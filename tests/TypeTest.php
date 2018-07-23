@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Spatie\Typed\Tests;
 
+use Spatie\Typed\Excpetions\InferredTypeError;
+use Spatie\Typed\Type;
 use TypeError;
 use Spatie\Typed\T;
 use Spatie\Typed\Collection;
@@ -46,6 +48,24 @@ class TypeTest extends TestCase
         $collection[] = $value;
     }
 
+
+    /** @test */
+    public function unknown_types_cannot_be_inferred()
+    {
+        $this->expectException(InferredTypeError::class);
+
+        T::infer(STDOUT);
+    }
+
+    /**
+     * @test
+     * @dataProvider inferredProvider
+     */
+    public function type_inference($value, Type $type)
+    {
+        $this->assertInstanceOf(get_class($type), T::infer($value));
+    }
+
     public function successProvider()
     {
         return [
@@ -75,6 +95,19 @@ class TypeTest extends TestCase
             [IntegerType::class, new Wrong()],
             [StringType::class, new Wrong()],
             [T::nullable(T::string()), new Wrong()],
+        ];
+    }
+
+    public function inferredProvider()
+    {
+        return [
+            ['a', T::string()],
+            [1, T::int()],
+            [1.1, T::float()],
+            [new Post(), T::generic(Post::class)],
+            [[], T::array()],
+            [true, T::boolean()],
+            [function () {}, T::callable()],
         ];
     }
 }
