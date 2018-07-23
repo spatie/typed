@@ -137,4 +137,21 @@ class TupleTest extends TestCase
 
         $tuple[0];
     }
+
+    /** @test */
+    public function types_can_be_partially_inferred()
+    {
+        $tuple = new Tuple(T::int(), 1, T::string());
+
+        $tuple[0] = 0;
+        $tuple[2] = 'a';
+
+        $this->assertEquals(0, $tuple[0]);
+        $this->assertEquals(1, $tuple[1]);
+        $this->assertEquals('a', $tuple[2]);
+
+        $this->expectException(WrongType::class);
+
+        $tuple[1] = new Wrong();
+    }
 }

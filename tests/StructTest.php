@@ -192,4 +192,25 @@ class StructTest extends TestCase
 
         $sturct->foo;
     }
+
+    /** @test */
+    public function types_can_be_partially_inferred()
+    {
+        $struct = new Struct([
+            'foo' => T::int(),
+            'bar' => 1,
+            'baz' => T::string(),
+        ]);
+
+        $struct->foo = 0;
+        $struct->baz = 'a';
+
+        $this->assertEquals(0, $struct->foo);
+        $this->assertEquals(1, $struct->bar);
+        $this->assertEquals('a', $struct->baz);
+
+        $this->expectException(WrongType::class);
+
+        $struct->bar = new Wrong();
+    }
 }
