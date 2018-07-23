@@ -1,6 +1,6 @@
 # 0.1.0
 
-- Add type inference.
+- Add type inference
 
 # 0.0.2
 
