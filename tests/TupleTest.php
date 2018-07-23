@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Spatie\Typed\Tests;
 
-use Spatie\Typed\Excpetions\InferredTypeError;
-use Spatie\Typed\Excpetions\UninitialisedError;
 use Spatie\Typed\T;
 use Spatie\Typed\Tuple;
 use Spatie\Typed\Tests\Extra\Post;
@@ -14,6 +12,7 @@ use Spatie\Typed\Tests\Extra\Wrong;
 use Spatie\Typed\Types\BooleanType;
 use Spatie\Typed\Types\IntegerType;
 use Spatie\Typed\Excpetions\WrongType;
+use Spatie\Typed\Excpetions\UninitialisedError;
 
 class TupleTest extends TestCase
 {
