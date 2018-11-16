@@ -25,7 +25,7 @@ class TupleTest extends TestCase
             new BooleanType())
         )->set(1, 'a', true);
 
-        $this->assertTrue(is_array($data->toArray()));
+        $this->assertInternalType('array', $data->toArray());
     }
 
     /** @test */
@@ -81,8 +81,8 @@ class TupleTest extends TestCase
 
         $this->assertEquals(1, $tuple[0]);
         $this->assertEquals('a', $tuple[1]);
-        $this->assertEquals(true, $tuple[2]);
-        $this->assertEquals(null, $tuple[3]);
+        $this->assertTrue($tuple[2]);
+        $this->assertNull($tuple[3]);
     }
 
     /** @test */

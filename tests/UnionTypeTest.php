@@ -20,8 +20,8 @@ class UnionTypeTest extends TestCase
         $list[] = 1;
         $list[] = 1.1;
 
-        $this->assertTrue(1 === $list[0]);
-        $this->assertTrue(1.1 === $list[1]);
+        $this->assertSame(1, $list[0]);
+        $this->assertSame(1.1, $list[1]);
     }
 
     /** @test */

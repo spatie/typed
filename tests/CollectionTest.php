@@ -96,13 +96,13 @@ class CollectionTest extends TestCase
         $list[] = null;
 
         foreach ($list as $i) {
-            $this->assertEquals(null, $i);
+            $this->assertNull($i);
         }
 
         $list[] = 1;
 
-        $this->assertEquals(null, $list[0]);
-        $this->assertEquals(null, $list[1]);
+        $this->assertNull($list[0]);
+        $this->assertNull($list[1]);
         $this->assertEquals(1, $list[2]);
     }
 

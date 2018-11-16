@@ -33,7 +33,7 @@ class StructTest extends TestCase
 
         $this->assertEquals('BrenDt', $struct['name']);
         $this->assertEquals(23, $struct->age);
-        $this->assertEquals(null, $struct['second_name']);
+        $this->assertNull($struct['second_name']);
     }
 
     /** @test */
