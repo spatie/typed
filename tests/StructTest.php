@@ -9,8 +9,8 @@ use Spatie\Typed\T;
 use Spatie\Typed\Struct;
 use Spatie\Typed\Tests\Extra\Post;
 use Spatie\Typed\Tests\Extra\Wrong;
-use Spatie\Typed\Excpetions\WrongType;
-use Spatie\Typed\Excpetions\UninitialisedError;
+use Spatie\Typed\Exceptions\WrongType;
+use Spatie\Typed\Exceptions\UninitialisedError;
 
 class StructTest extends TestCase
 {

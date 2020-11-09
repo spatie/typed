@@ -1,6 +1,6 @@
 <?php
 
-namespace Spatie\Typed\Excpetions;
+namespace Spatie\Typed\Exceptions;
 
 use TypeError;
 

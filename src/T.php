@@ -14,7 +14,7 @@ use Spatie\Typed\Types\GenericType;
 use Spatie\Typed\Types\IntegerType;
 use Spatie\Typed\Types\CallableType;
 use Spatie\Typed\Types\CollectionType;
-use Spatie\Typed\Excpetions\InferredTypeError;
+use Spatie\Typed\Exceptions\InferredTypeError;
 
 class T
 {

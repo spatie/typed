@@ -11,8 +11,8 @@ use Spatie\Typed\Types\StringType;
 use Spatie\Typed\Tests\Extra\Wrong;
 use Spatie\Typed\Types\BooleanType;
 use Spatie\Typed\Types\IntegerType;
-use Spatie\Typed\Excpetions\WrongType;
-use Spatie\Typed\Excpetions\UninitialisedError;
+use Spatie\Typed\Exceptions\WrongType;
+use Spatie\Typed\Exceptions\UninitialisedError;
 
 class TupleTest extends TestCase
 {
