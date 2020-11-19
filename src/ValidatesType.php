@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Spatie\Typed;
 
 use TypeError;
-use Spatie\Typed\Excpetions\WrongType;
+use Spatie\Typed\Exceptions\WrongType;
 
 trait ValidatesType
 {

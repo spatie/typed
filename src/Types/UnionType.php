@@ -7,7 +7,7 @@ namespace Spatie\Typed\Types;
 use TypeError;
 use Spatie\Typed\Type;
 use Spatie\Typed\ValidatesType;
-use Spatie\Typed\Excpetions\WrongType;
+use Spatie\Typed\Exceptions\WrongType;
 
 class UnionType implements Type
 {

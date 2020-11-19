@@ -6,8 +6,8 @@ namespace Spatie\Typed;
 
 use Iterator;
 use ArrayAccess;
-use Spatie\Typed\Excpetions\WrongType;
-use Spatie\Typed\Excpetions\UninitialisedError;
+use Spatie\Typed\Exceptions\WrongType;
+use Spatie\Typed\Exceptions\UninitialisedError;
 
 class Tuple implements ArrayAccess
 {
