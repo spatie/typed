@@ -11,6 +11,7 @@ final class CallableList extends Collection
 {
     public function __construct(array $data = [])
     {
-        parent::__construct(new CallableType(), $data);
+        parent::__construct(new CallableType());
+        $this->set($data);
     }
 }

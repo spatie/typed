@@ -11,6 +11,7 @@ final class GenericList extends Collection
 {
     public function __construct(string $type, array $data = [])
     {
-        parent::__construct(new GenericType($type), $data);
+        parent::__construct(new GenericType($type));
+        $this->set($data);
     }
 }
