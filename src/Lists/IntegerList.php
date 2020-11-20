@@ -11,6 +11,7 @@ final class IntegerList extends Collection
 {
     public function __construct(array $data = [])
     {
-        parent::__construct(new IntegerType(), $data);
+        parent::__construct(new IntegerType());
+        $this->set($data);
     }
 }
